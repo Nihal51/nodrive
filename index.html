@@ -645,15 +645,15 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     <div class="book-card reveal d2" id="bookCard">
       <div id="bookFormWrap">
         <div class="bc-title">Book a Driver</div>
-        <div class="bc-sub">Details sent to your team · <strong>✓ No WhatsApp redirect needed</strong></div>
+        <div class="bc-sub">Instant confirmation · <strong>✓ No WhatsApp redirect</strong></div>
 
-        <form id="bookingForm" novalidate>
+        <!-- ⚠️ SETUP INSTRUCTION (remove this box after setup) -->
           <!-- Hidden fields for Web3Forms -->
+          
           <input type="hidden" name="access_key" value="50830da6-b8d9-4306-8533-771dd6b744fa">
           <input type="hidden" name="subject" value="🚗 New DriveBuddy Booking Request">
           <input type="hidden" name="from_name" value="DriveBuddy Website">
           <input type="hidden" name="replyto" value="nihalwarriors47@gmail.com">
-
           <div class="field-row">
             <div class="field">
               <label>Pickup Location</label>
@@ -942,7 +942,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
       <div class="ft-contacts">
         <a href="tel:919111473929">📞 9111473929</a>
         <a href="tel:919893302783">📞 9893302783</a>
-        <a href="/cdn-cgi/l/email-protection#3d5354555c515e555c53594f5c565c4f0a0d7d5a505c5451135e5250">✉️ <span class="__cf_email__" data-cfemail="4f2126272e232c272e212b3d2e242e3d787f0f28222e2623612c2022">[email&#160;protected]</span></a>
+        <a href="mailto:nihalchandrakar70@gmail.com">✉️ nihalchandrakar70@gmail.com</a>
       </div>
     </div>
     <div class="ft-col"><h4>Services</h4><ul><li><a href="#services">Personal Driver</a></li><li><a href="#services">Medical Transport</a></li><li><a href="#services">Night Safety</a></li><li><a href="#services">Airport Service</a></li><li><a href="#services">Outstation Driver</a></li></ul></div>
@@ -999,7 +999,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
   <div class="chat-powered">🤖 Powered by Claude AI · DriveBuddy © 2026</div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ─── NAV SCROLL ─── */
 const NAV=document.getElementById('nav');
 window.addEventListener('scroll',()=>NAV.classList.toggle('scrolled',scrollY>50),{passive:true});
@@ -1273,4 +1273,9 @@ function localReply(q){
   if(l.match(/hospital|medical|emergency/))return '🏥 Hospital & emergency bookings are top priority. Call <strong>9111473929</strong> immediately for fastest dispatch.';
   if(l.match(/verify|safe|background|police/))return '🛡️ All drivers pass 4-stage verification: Government ID · Police background · Breathalyzer every shift · 5+ years experience.';
   if(l.match(/airport|flight/))return '✈️ Airport service with real-time flight tracking. Your driver waits even if your flight is delayed! Call <strong>9111473929</strong>.';
-  if(l.match(/payment|pay|upi|cash|gpay/))return '💳 We accept <strong>Cash, UPI (GPay/PhonePe/Paytm)</strong>, and
+  if(l.match(/payment|pay|upi|cash|gpay/))return '💳 We accept <strong>Cash, UPI (GPay/PhonePe/Paytm)</strong>, and bank transfer. Fully transparent — zero hidden charges.';
+  return '🚗 For immediate assistance, call <strong>9111473929</strong> or use the booking form on this page. Available 24×7 across Raipur, Bhilai, Durg & Bilaspur!';
+}
+</script>
+</body>
+</html>
