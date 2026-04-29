@@ -22,6 +22,19 @@ html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
   --ease:cubic-bezier(0.22,1,0.36,1);--dur:0.5s;
 }
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x:hidden;line-height:1.6}
+body.splash-active{overflow:hidden}
+body.splash-active > *:not(.splash-screen){visibility:hidden}
+.splash-screen{position:fixed;inset:0;z-index:12000;background:radial-gradient(circle at 50% 45%,rgba(201,153,58,0.12),var(--ink) 60%);display:flex;align-items:center;justify-content:center;transition:opacity .45s var(--ease),visibility .45s var(--ease);opacity:1;visibility:visible}
+.splash-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{position:relative;display:flex;align-items:center;gap:1.1rem;padding:1.4rem 1.7rem;border:1px solid var(--gold-rim);border-radius:18px;background:rgba(8,7,10,0.75);box-shadow:0 25px 80px rgba(0,0,0,.55)}
+.splash-car{display:block;font-size:2.1rem;line-height:1;opacity:0;transform:translateX(-95px) rotate(-6deg);animation:driveIn 1.2s var(--ease) forwards}
+.splash-brand{font-family:var(--serif);font-size:2rem;letter-spacing:-.02em;color:var(--cream);opacity:0;transform:translateY(8px);animation:brandIn .55s .7s var(--ease) forwards}
+.splash-brand span{color:var(--gold)}
+.splash-road{position:absolute;left:1.1rem;right:1.1rem;bottom:.7rem;height:1px;background:linear-gradient(90deg,transparent,var(--gold-rim),transparent)}
+@keyframes driveIn{0%{transform:translateX(-95px) rotate(-6deg);opacity:0}45%{opacity:1}75%{transform:translateX(8px) rotate(0)}100%{transform:translateX(0);opacity:1}}
+@keyframes brandIn{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.splash-car,.splash-brand{animation:none;opacity:1;transform:none}}
+
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--gold)}
 body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.4;mix-blend-mode:soft-light}
@@ -356,7 +369,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 }
 </style>
 </head>
-<body>
+<body class="splash-active">
 
 <!-- ════════════════════════════════════════════
   ⚠️  SETUP INSTRUCTIONS — READ BEFORE DEPLOYING
@@ -429,6 +442,15 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 <script>
   const WORKER_URL = 'https://YOUR-WORKER.YOUR-NAME.workers.dev';
 </script>
+
+
+<div class="splash-screen" id="splashScreen" aria-hidden="true">
+  <div class="splash-inner" role="img" aria-label="DriveBuddy loading intro">
+    <div class="splash-car" aria-hidden="true">🚗</div>
+    <div class="splash-brand">Drive<span>Buddy</span></div>
+    <div class="splash-road"></div>
+  </div>
+</div>
 
 <div id="scrollBar"></div>
 <div id="cursorGlow"></div>
@@ -1028,6 +1050,23 @@ document.getElementById('driverForm').addEventListener('submit', async function(
 const ss = document.createElement('style');
 ss.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
 document.head.appendChild(ss);
+
+
+/* ── SPLASH SCREEN ── */
+(function(){
+  const splash = document.getElementById('splashScreen');
+  if (!splash) return;
+  const skipMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (skipMotion) {
+    splash.remove();
+    return;
+  }
+  setTimeout(() => {
+    splash.classList.add('hide');
+    document.body.classList.remove('splash-active');
+    setTimeout(() => splash.remove(), 500);
+  }, 1700);
+})();
 
 /* ── SCROLL PROGRESS ── */
 window.addEventListener('scroll', () => {
