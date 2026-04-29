@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DriveBuddy — Premium Driver Services | Chhattisgarh</title>
 <meta name="description" content="Chhattisgarh's #1 driver-on-demand. Certified, background-verified drivers in Raipur, Bhilai, Durg & Bilaspur. 30-min response. Call 9111473929">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Figtree:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -24,21 +25,13 @@ body{background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--gold)}
 body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.4;mix-blend-mode:soft-light}
-
-/* ── SCROLL PROGRESS BAR ── */
 #scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));z-index:9999;width:0%;transition:width 0.1s linear;pointer-events:none}
-
-/* ── CURSOR GLOW (desktop only) ── */
 #cursorGlow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,153,58,0.04) 0%,transparent 65%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0}
-
-/* ── LOGO ── */
 .logo-mark{display:flex;align-items:center;gap:0.65rem;cursor:pointer}
 .logo-text{display:flex;flex-direction:column;line-height:1}
 .logo-text-main{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;color:var(--cream)}
 .logo-text-main span{color:var(--gold)}
 .logo-text-sub{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-50);margin-top:1px}
-
-/* ── NAV (desktop — UNCHANGED) ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5%;background:rgba(8,7,10,0.75);backdrop-filter:blur(32px) saturate(1.4);border-bottom:1px solid var(--rim);transition:padding var(--dur) var(--ease),background var(--dur) var(--ease)}
 nav.scrolled{padding:0.7rem 5%;background:rgba(8,7,10,0.96)}
 .nav-links{display:flex;align-items:center;gap:0.2rem;background:var(--cream-10);border:1px solid var(--rim);border-radius:50px;padding:0.35rem 0.7rem}
@@ -47,23 +40,15 @@ nav.scrolled{padding:0.7rem 5%;background:rgba(8,7,10,0.96)}
 .nav-actions{display:flex;align-items:center;gap:0.7rem}
 .nav-call{display:flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--ink);padding:0.5rem 1.2rem;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.03em;transition:var(--dur) var(--ease);white-space:nowrap}
 .nav-call:hover{background:var(--gold-bright);box-shadow:0 6px 24px rgba(201,153,58,0.35);transform:translateY(-1px)}
-
-/* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:9px 10px;border-radius:12px;background:var(--cream-10);border:1px solid var(--rim);transition:var(--dur) var(--ease)}
 .hamburger:hover{border-color:var(--gold-rim);background:var(--gold-dim)}
 .hamburger span{display:block;width:22px;height:2px;background:var(--cream);border-radius:2px;transition:var(--dur) var(--ease)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.9px,4.9px)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.9px,-4.9px)}
-
-/* ── BACKDROP ── */
-.drawer-backdrop{position:fixed;inset:0;z-index:489;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.35s}
+.drawer-backdrop{position:fixed;inset:0;z-index:505;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.35s}
 .drawer-backdrop.open{opacity:1;pointer-events:all}
-
-/* ══════════════════════════════════════
-   DESKTOP DRAWER (unchanged side panel)
-══════════════════════════════════════ */
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:490;width:min(340px,88vw);background:var(--ink2);border-left:1px solid var(--rim);display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.38s var(--ease);box-shadow:-40px 0 100px rgba(0,0,0,0.8)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:510;width:min(340px,88vw);background:var(--ink2);border-left:1px solid var(--rim);display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.38s var(--ease);box-shadow:-40px 0 100px rgba(0,0,0,0.8)}
 .drawer.open{transform:none}
 .drawer-head{padding:1.4rem 1.6rem;border-bottom:1px solid var(--rim);display:flex;align-items:center;justify-content:space-between}
 .drawer-close{width:36px;height:36px;background:var(--cream-10);border:1px solid var(--rim);border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--cream-50);font-size:0.9rem;transition:var(--dur)}
@@ -77,115 +62,35 @@ nav.scrolled{padding:0.7rem 5%;background:rgba(8,7,10,0.96)}
 .drawer-foot a{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem;border-radius:12px;font-weight:700;font-size:0.87rem;transition:var(--dur)}
 .d-call{background:var(--gold);color:var(--ink)}.d-call:hover{background:var(--gold-bright)}
 .d-wa{background:#25D366;color:#fff}.d-wa:hover{background:#1DBE5A}
-
-/* ══════════════════════════════════════
-   MOBILE MENU — FULL SCREEN UBER STYLE
-══════════════════════════════════════ */
 @media(max-width:768px){
   .hamburger{display:flex}
   .nav-links,.nav-actions .nav-call{display:none}
-
-  /* Full-screen overlay on mobile */
-  .drawer{
-    width:100%;
-    left:0;
-    border-left:none;
-    background:var(--ink);
-    transform:translateY(-100%);
-    transition:transform 0.45s var(--ease);
-  }
+  .drawer{width:100%;left:0;border-left:none;background:var(--ink);transform:translateY(-100%);transition:transform 0.45s var(--ease);}
   .drawer.open{transform:translateY(0)}
-
-  /* Mobile drawer header */
-  .drawer-head{
-    padding:1.2rem 1.5rem;
-    border-bottom:1px solid var(--rim);
-    background:var(--ink);
-  }
-  .drawer-close{
-    width:44px;height:44px;border-radius:50%;
-    background:var(--cream-10);
-    font-size:1.1rem;
-    border-color:var(--rim);
-  }
-
-  /* Mobile nav links — BIG BOLD like Uber */
-  .drawer-body{
-    padding:0;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    flex:1;
-  }
-  .drawer-body a{
-    display:block;
-    padding:1.05rem 1.8rem;
-    border-radius:0;
-    border:none !important;
-    border-bottom:1px solid var(--rim) !important;
-    background:transparent !important;
-    font-family:var(--serif);
-    font-size:2.4rem;
-    font-weight:700;
-    color:var(--cream);
-    letter-spacing:-0.02em;
-    line-height:1;
-    transition:color 0.2s, padding-left 0.3s;
-    /* stagger starts hidden */
-    opacity:0;
-    transform:translateY(24px);
-  }
+  .drawer-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--rim);background:var(--ink);}
+  .drawer-close{width:44px;height:44px;border-radius:50%;background:var(--cream-10);font-size:1.1rem;border-color:var(--rim);}
+  .drawer-body{padding:0;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;flex:1;}
+  .drawer-body a{display:block;padding:1.05rem 1.8rem;border-radius:0;border:none !important;border-bottom:1px solid var(--rim) !important;background:transparent !important;font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--cream);letter-spacing:-0.02em;line-height:1;transition:color 0.2s,padding-left 0.3s;opacity:0;transform:translateY(24px);}
   .drawer-body a .di{display:none}
-  .drawer-body a:hover{
-    color:var(--gold);
-    padding-left:2.4rem;
-    background:transparent !important;
-  }
-  /* AI Assistant link special */
-  .drawer-body a[style*="gold"]{
-    color:var(--gold) !important;
-    font-style:italic;
-  }
+  .drawer-body a:hover{color:var(--gold);padding-left:2.4rem;background:transparent !important;}
   .drawer-sep{display:none}
-
-  /* Animate items in when drawer opens */
-  .drawer.open .drawer-body a{
-    opacity:1;
-    transform:translateY(0);
-  }
+  .drawer.open .drawer-body a{opacity:1;transform:translateY(0);}
   .drawer.open .drawer-body a:nth-child(1){transition:opacity 0.4s 0.05s var(--ease),transform 0.4s 0.05s var(--ease),color 0.2s,padding-left 0.3s}
   .drawer.open .drawer-body a:nth-child(2){transition:opacity 0.4s 0.12s var(--ease),transform 0.4s 0.12s var(--ease),color 0.2s,padding-left 0.3s}
   .drawer.open .drawer-body a:nth-child(3){transition:opacity 0.4s 0.19s var(--ease),transform 0.4s 0.19s var(--ease),color 0.2s,padding-left 0.3s}
   .drawer.open .drawer-body a:nth-child(4){transition:opacity 0.4s 0.26s var(--ease),transform 0.4s 0.26s var(--ease),color 0.2s,padding-left 0.3s}
   .drawer.open .drawer-body a:nth-child(5){transition:opacity 0.4s 0.33s var(--ease),transform 0.4s 0.33s var(--ease),color 0.2s,padding-left 0.3s}
   .drawer.open .drawer-body a:nth-child(6){transition:opacity 0.4s 0.40s var(--ease),transform 0.4s 0.40s var(--ease),color 0.2s,padding-left 0.3s}
-  .drawer.open .drawer-body a:nth-child(8){transition:opacity 0.4s 0.47s var(--ease),transform 0.4s 0.47s var(--ease),color 0.2s,padding-left 0.3s}
-
-  /* Mobile footer buttons */
-  .drawer-foot{
-    padding:1.4rem 1.5rem;
-    gap:0.7rem;
-    border-top:1px solid var(--rim);
-    background:var(--ink);
-  }
-  .drawer-foot a{
-    padding:1.05rem;
-    border-radius:14px;
-    font-size:1rem;
-    font-weight:700;
-  }
+  .drawer.open .drawer-body a:nth-child(7){transition:opacity 0.4s 0.47s var(--ease),transform 0.4s 0.47s var(--ease),color 0.2s,padding-left 0.3s}
+  .drawer-foot{padding:1.4rem 1.5rem;gap:0.7rem;border-top:1px solid var(--rim);background:var(--ink);}
+  .drawer-foot a{padding:1.05rem;border-radius:14px;font-size:1rem;font-weight:700;}
 }
-
-/* ── MARQUEE STRIP ── */
 .marquee-wrap{background:var(--gold);overflow:hidden;padding:0.55rem 0;position:relative;z-index:2}
 .marquee-track{display:flex;gap:0;animation:marqueeScroll 28s linear infinite;width:max-content}
 .marquee-track:hover{animation-play-state:paused}
 .marquee-item{display:flex;align-items:center;gap:0.7rem;padding:0 2rem;font-family:var(--mono);font-size:0.72rem;font-weight:500;color:var(--ink);letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
 .marquee-dot{width:4px;height:4px;background:rgba(8,7,10,0.4);border-radius:50%}
 @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ── HERO ── */
 .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:9rem 5% 5rem;max-width:1400px;margin:0 auto;position:relative}
 #heroCanvas{position:absolute;inset:0;pointer-events:none;opacity:0.6;z-index:0}
 .hero::before{content:'';position:absolute;top:10%;right:0;width:50%;height:80%;background:radial-gradient(ellipse at 80% 40%,rgba(201,153,58,0.08) 0%,transparent 65%);pointer-events:none}
@@ -207,15 +112,9 @@ nav.scrolled{padding:0.7rem 5%;background:rgba(8,7,10,0.96)}
 .btn:hover::after{transform:translateX(100%)}
 .btn-primary{background:var(--gold);color:var(--ink)}.btn-primary:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,153,58,0.45)}
 .btn-ghost{background:transparent;color:var(--cream);border:1px solid var(--rim)}.btn-ghost:hover{border-color:var(--cream-25);background:var(--cream-10)}
-
-/* ── BOOK CARD ── */
 .book-card{background:var(--ink2);border:1px solid var(--rim);border-radius:28px;padding:2.6rem 2.2rem;position:relative;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.55);z-index:1;animation:bookFloat 6s ease-in-out infinite}
 @keyframes bookFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .book-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold-bright) 55%,transparent 100%)}
-/* Animated glow border */
-.book-card::after{content:'';position:absolute;inset:-1px;border-radius:29px;background:linear-gradient(135deg,var(--gold),transparent,var(--gold-bright),transparent,var(--gold));opacity:0;z-index:-1;transition:opacity 0.4s;animation:borderRotate 4s linear infinite}
-@keyframes borderRotate{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.book-card:hover::after{opacity:0.3}
 .bc-title{font-family:var(--serif);font-size:1.65rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem}
 .bc-sub{font-size:0.8rem;color:var(--cream-50);margin-bottom:1.8rem;font-weight:300}.bc-sub strong{color:var(--green)}
 .book-success{display:none;text-align:center;padding:2rem 0}
@@ -235,8 +134,6 @@ nav.scrolled{padding:0.7rem 5%;background:rgba(8,7,10,0.96)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem}
 .field-err{font-size:0.7rem;color:var(--red);margin-top:0.25rem;display:none;font-family:var(--mono)}
 .submit-btn{width:100%;margin-top:1.2rem;background:var(--gold);color:var(--ink);border:none;border-radius:14px;padding:1.05rem;font-family:var(--sans);font-size:0.95rem;font-weight:700;cursor:pointer;transition:var(--dur) var(--ease);letter-spacing:0.01em;display:flex;align-items:center;justify-content:center;gap:0.6rem;position:relative;overflow:hidden}
-.submit-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);transform:translateX(-100%)}
-.submit-btn:hover::after{transform:translateX(100%);transition:transform 0.6s}
 .submit-btn:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 12px 28px rgba(201,153,58,0.4)}
 .submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
 .form-note{text-align:center;font-size:0.71rem;color:var(--cream-25);margin-top:0.75rem;display:flex;align-items:center;justify-content:center;gap:0.35rem;font-family:var(--mono)}
@@ -255,8 +152,6 @@ section{padding:7rem 5%}
 .s-h{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-0.02em;color:var(--cream)}
 .s-h em{font-style:italic;color:var(--gold);font-weight:600}
 .s-p{color:var(--cream-50);font-size:0.95rem;font-weight:300;line-height:1.8;max-width:460px}
-
-/* ── WHY CARDS ── */
 .why-bg{background:var(--ink)}
 .why-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;margin-bottom:3.5rem}
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
@@ -268,15 +163,11 @@ section{padding:7rem 5%}
 .why-card:hover .wc-ico{background:var(--gold);border-color:var(--gold);transform:rotate(-8deg) scale(1.15)}
 .why-card h3{font-size:0.95rem;font-weight:700;color:var(--cream);margin-bottom:0.45rem}
 .why-card p{font-size:0.81rem;color:var(--cream-50);line-height:1.65;font-weight:300}
-
-/* ── STATS ── */
 .stats-strip{background:var(--ink2);border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);padding:3rem 5%}
 .stats-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
 .stat-item{text-align:center;padding:0 2rem;border-right:1px solid var(--rim)}.stat-item:last-child{border-right:none}
 .stat-n{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;color:var(--gold);line-height:1;letter-spacing:-0.03em;margin-bottom:0.4rem}
 .stat-l{font-family:var(--mono);font-size:0.68rem;color:var(--cream-25);letter-spacing:0.1em;text-transform:uppercase}
-
-/* ── SERVICE CARDS ── */
 .srv-bg{background:var(--ink2)}
 .srv-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;margin-bottom:3.5rem}
 .srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
@@ -288,8 +179,6 @@ section{padding:7rem 5%}
 .srv-info h3{font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem}
 .srv-info p{font-size:0.82rem;color:var(--cream-50);line-height:1.65;font-weight:300}
 .srv-tag{display:inline-flex;margin-top:0.8rem;font-family:var(--mono);font-size:0.61rem;color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-rim);border-radius:5px;padding:0.18rem 0.55rem;letter-spacing:0.07em}
-
-/* ── PRICING ── */
 .pricing-bg{background:var(--ink);position:relative;overflow:hidden}
 .pricing-bg::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(201,153,58,0.05) 0%,transparent 65%);pointer-events:none;animation:pricingPulse 6s ease infinite}
 @keyframes pricingPulse{0%,100%{opacity:0.5}50%{opacity:1}}
@@ -314,8 +203,6 @@ section{padding:7rem 5%}
 .pc-btn-outline{background:transparent;color:var(--cream);border:1px solid var(--rim)!important;border-radius:11px!important}
 .pc-btn-outline:hover{border-color:var(--gold-rim)!important;background:var(--gold-dim)}
 .pc-btn-gold{background:var(--gold);color:var(--ink)}.pc-btn-gold:hover{background:var(--gold-bright);box-shadow:0 10px 24px rgba(201,153,58,0.4)}
-
-/* ── REVIEWS ── */
 .rev-bg{background:var(--ink2)}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
 .rev-card{background:var(--ink);border:1px solid var(--rim);border-radius:20px;padding:2rem;transition:var(--dur);position:relative;overflow:hidden}
@@ -327,8 +214,6 @@ section{padding:7rem 5%}
 .rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8A6A20);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--ink);font-weight:700;flex-shrink:0}
 .rev-name{font-size:0.83rem;font-weight:700;color:var(--cream)}
 .rev-loc{font-size:0.7rem;color:var(--cream-25);margin-top:0.1rem;font-family:var(--mono)}
-
-/* ── CITIES ── */
 .cities-bg{background:var(--ink)}
 .cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
 .city-card{background:var(--ink2);border:1px solid var(--rim);border-radius:20px;padding:2rem 1.7rem;text-align:center;transition:var(--dur) var(--ease)}
@@ -338,8 +223,6 @@ section{padding:7rem 5%}
 .city-name{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem}
 .city-d{font-size:0.79rem;color:var(--cream-25);line-height:1.6;font-weight:300}
 .city-tag{display:inline-block;margin-top:0.9rem;font-family:var(--mono);font-size:0.6rem;color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-rim);border-radius:5px;padding:0.18rem 0.6rem;letter-spacing:0.08em}
-
-/* ── FAQ ── */
 .faq-bg{background:var(--ink2)}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:3.5rem;align-items:start}
 .faq-item{background:var(--ink);border:1px solid var(--rim);border-radius:15px;overflow:hidden;transition:var(--dur)}
@@ -350,8 +233,6 @@ section{padding:7rem 5%}
 .faq-item.open .faq-arrow{transform:rotate(180deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease),padding 0.3s;font-size:0.83rem;color:var(--cream-50);line-height:1.75;font-weight:300;padding:0 1.5rem}
 .faq-item.open .faq-a{max-height:200px;padding:0 1.5rem 1.3rem}
-
-/* ── CTA ── */
 .cta-bg{background:var(--ink);text-align:center;padding:9rem 5%;position:relative;overflow:hidden}
 .cta-bg::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(201,153,58,0.07) 0%,transparent 65%);pointer-events:none;animation:pricingPulse 4s ease infinite}
 .cta-inner{max-width:600px;margin:0 auto;position:relative}
@@ -360,11 +241,7 @@ section{padding:7rem 5%}
 .cta-p{color:var(--cream-50);font-size:0.97rem;font-weight:300;margin-bottom:2.8rem;line-height:1.75}
 .cta-row{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap}
 .btn-wa{background:#25D366;color:#fff;padding:0.95rem 2.2rem;border-radius:50px;font-weight:700;font-size:0.88rem;display:inline-flex;align-items:center;gap:0.5rem;transition:var(--dur);position:relative;overflow:hidden}
-.btn-wa::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);transform:translateX(-100%)}
-.btn-wa:hover::after{transform:translateX(100%);transition:transform 0.6s}
 .btn-wa:hover{background:#1DBE5A;transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.4)}
-
-/* ── FOOTER ── */
 footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.5rem}
 .ft-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid var(--rim);margin-bottom:1.8rem}
 .ft-brand p{font-size:0.82rem;color:var(--cream-25);line-height:1.75;max-width:270px;font-weight:300;margin-top:1rem}
@@ -378,17 +255,25 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 .ft-bottom{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .ft-bottom p{font-size:0.74rem;color:var(--cream-25)}
 .ft-cities{font-family:var(--mono);font-size:0.66rem;color:var(--gold);letter-spacing:0.1em;opacity:0.7}
-
 /* ── AI FAB ── */
 .ai-fab{position:fixed;bottom:2rem;right:2rem;z-index:800;width:62px;height:62px;border-radius:50%;background:var(--ink2);border:1.5px solid var(--gold-rim);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,0.6);transition:var(--dur) var(--ease);animation:fab-in 0.5s var(--ease) 1s both,fabglow 3.5s ease 2s infinite}
 @keyframes fab-in{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 @keyframes fabglow{0%,100%{box-shadow:0 8px 32px rgba(0,0,0,0.6),0 0 0 0 rgba(201,153,58,0.3)}50%{box-shadow:0 8px 32px rgba(0,0,0,0.6),0 0 0 14px rgba(201,153,58,0)}}
 .ai-fab:hover{transform:scale(1.1);border-color:var(--gold)}
 .ai-fab .fab-ai{position:absolute;bottom:-2px;right:-2px;width:20px;height:20px;background:var(--gold);border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.48rem;color:var(--ink);font-weight:700}
-
-/* ── CHAT PANEL ── */
-.chat-panel{position:fixed;bottom:7rem;right:2rem;z-index:800;width:390px;max-width:calc(100vw - 2rem);background:var(--ink2);border:1px solid var(--rim);border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.85);display:none;flex-direction:column;max-height:620px;transform:translateY(16px) scale(0.97);opacity:0;transition:transform 0.4s var(--ease),opacity 0.4s var(--ease)}
-.chat-panel.open{display:flex;transform:none;opacity:1}
+/* ── CHAT PANEL — fixed animation ── */
+.chat-panel{
+  position:fixed;bottom:7rem;right:2rem;z-index:800;width:390px;
+  max-width:calc(100vw - 2rem);background:var(--ink2);border:1px solid var(--rim);
+  border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.85);
+  flex-direction:column;max-height:620px;
+  /* Always flex, use visibility+opacity+transform for animation */
+  display:flex;
+  visibility:hidden;opacity:0;pointer-events:none;
+  transform:translateY(16px) scale(0.97);
+  transition:transform 0.4s var(--ease),opacity 0.4s var(--ease),visibility 0.4s;
+}
+.chat-panel.open{visibility:visible;opacity:1;pointer-events:all;transform:none}
 .chat-hd{background:var(--ink3);border-bottom:1px solid var(--rim);padding:1.15rem 1.3rem;display:flex;align-items:center;gap:0.9rem;position:relative}
 .chat-hd::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .chat-av{width:42px;height:42px;border-radius:50%;background:var(--gold-dim);border:1.5px solid var(--gold-rim);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
@@ -422,16 +307,21 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 .chat-send{width:38px;height:38px;background:var(--gold);border:none;border-radius:10px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:var(--dur);color:var(--ink)}
 .chat-send:hover{background:var(--gold-bright);transform:scale(1.05)}.chat-send:disabled{opacity:0.35;cursor:not-allowed;transform:none}
 .chat-powered{text-align:center;padding:0.45rem;font-size:0.62rem;color:var(--cream-25);font-family:var(--mono);background:var(--ink2);letter-spacing:0.04em}
-
-/* ── REVEAL ANIMATIONS ── */
+/* Driver form */
+.driver-section{background:var(--ink2);border-radius:28px;border:1px solid var(--rim);padding:2.6rem 2.2rem;margin-top:2rem;position:relative;overflow:hidden}
+.driver-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.driver-success{display:none;text-align:center;padding:2rem 0}
+.driver-success .si{font-size:3rem;margin-bottom:1rem}
+.driver-success h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem}
+.driver-success p{font-size:0.86rem;color:var(--cream-50);line-height:1.7}
+/* Toast notification */
+.toast{position:fixed;bottom:7rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink2);border:1px solid var(--gold-rim);border-radius:12px;padding:0.8rem 1.4rem;font-size:0.83rem;color:var(--cream);font-family:var(--sans);z-index:9999;opacity:0;transition:opacity 0.3s,transform 0.3s;pointer-events:none;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{border-color:var(--red);color:var(--red)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}.reveal.visible{opacity:1;transform:none}
 .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
-
-/* ── RIPPLE ── */
 .ripple{position:absolute;border-radius:50%;transform:scale(0);animation:rippleAnim 0.6s linear;background:rgba(255,255,255,0.15);pointer-events:none}
 @keyframes rippleAnim{to{transform:scale(4);opacity:0}}
-
-/* ── RESPONSIVE ── */
 @media(max-width:1200px){.pricing-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:1100px){.why-grid{grid-template-columns:1fr 1fr}.cities-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){
@@ -461,8 +351,81 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 </head>
 <body>
 
+<!-- ════════════════════════════════════════════
+  ⚠️  SETUP INSTRUCTIONS — READ BEFORE DEPLOYING
+  ════════════════════════════════════════════
+
+  1. CLOUDFLARE WORKER (for AI chat) ─────────────
+     a) Go to https://workers.cloudflare.com → Create Worker
+     b) Paste the worker code from the <script id="worker-code"> comment below
+     c) Add secret: Settings → Variables → Add Variable
+        Name: ANTHROPIC_API_KEY  Value: sk-ant-xxxxx  (mark as Secret)
+     d) Copy your worker URL (e.g. https://drivebuddy-ai.YOUR-NAME.workers.dev)
+     e) Replace WORKER_URL below with your actual worker URL
+
+  2. FIREBASE SECURITY RULES ──────────────────────
+     In Firebase Console → Firestore → Rules, paste:
+
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+         match /bookings/{docId} {
+           allow create: if request.resource.data.name is string
+             && request.resource.data.phone is string
+             && request.resource.data.phone.size() == 10
+             && request.resource.data.pickup is string;
+           allow read, update, delete: if false;
+         }
+         match /drivers/{docId} {
+           allow create: if request.resource.data.name is string
+             && request.resource.data.phone is string;
+           allow read, update, delete: if false;
+         }
+       }
+     }
+
+  3. CLOUDFLARE WORKER CODE ────────────────────────
+     Create a new Worker and paste this code:
+
+     export default {
+       async fetch(request, env) {
+         if (request.method === 'OPTIONS') {
+           return new Response(null, { headers: {
+             'Access-Control-Allow-Origin': '*',
+             'Access-Control-Allow-Methods': 'POST',
+             'Access-Control-Allow-Headers': 'Content-Type'
+           }});
+         }
+         const body = await request.json();
+         const res = await fetch('https://api.anthropic.com/v1/messages', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+             'x-api-key': env.ANTHROPIC_API_KEY,
+             'anthropic-version': '2023-06-01'
+           },
+           body: JSON.stringify(body)
+         });
+         const data = await res.json();
+         return new Response(JSON.stringify(data), {
+           headers: {
+             'Content-Type': 'application/json',
+             'Access-Control-Allow-Origin': '*'
+           }
+         });
+       }
+     };
+
+════════════════════════════════════════════ -->
+
+<!-- ▼▼ REPLACE THIS WITH YOUR CLOUDFLARE WORKER URL ▼▼ -->
+<script>
+  const WORKER_URL = 'https://YOUR-WORKER.YOUR-NAME.workers.dev';
+</script>
+
 <div id="scrollBar"></div>
 <div id="cursorGlow"></div>
+<div class="toast" id="toast"></div>
 
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="logo-icon" viewBox="0 0 48 48">
@@ -484,7 +447,8 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     </div>
   </a>
   <div class="nav-links">
-    <a href="#why">Why Us</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#cities">Cities</a><a href="#faq">FAQ</a>
+    <a href="#why">Why Us</a><a href="#services">Services</a><a href="#pricing">Pricing</a>
+    <a href="#cities">Cities</a><a href="#driver-register">Join as Driver</a><a href="#faq">FAQ</a>
   </div>
   <div class="nav-actions">
     <a href="tel:919111473929" class="nav-call">
@@ -510,9 +474,10 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     <a href="#pricing" onclick="toggleDrawer()"><span class="di">💰</span>Pricing</a>
     <a href="#cities" onclick="toggleDrawer()"><span class="di">📍</span>Cities</a>
     <a href="#reviews" onclick="toggleDrawer()"><span class="di">⭐</span>Reviews</a>
+    <a href="#driver-register" onclick="toggleDrawer()"><span class="di">🚦</span>Join as Driver</a>
     <a href="#faq" onclick="toggleDrawer()"><span class="di">❓</span>FAQ</a>
     <div class="drawer-sep"></div>
-    <a href="#" onclick="toggleDrawer();setTimeout(()=>document.getElementById('aiFab').click(),200)" style="color:var(--gold)"><span class="di">🤖</span>AI Assistant</a>
+    <a href="#" onclick="toggleDrawer();setTimeout(()=>toggleChat(),200)" style="color:var(--gold)"><span class="di">🤖</span>AI Assistant</a>
   </div>
   <div class="drawer-foot">
     <a href="tel:919111473929" class="d-call">📞 Call — 9111473929</a>
@@ -523,9 +488,8 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
   </div>
 </div>
 
-<!-- MARQUEE STRIP -->
 <div class="marquee-wrap" style="margin-top:65px">
-  <div class="marquee-track" id="marquee">
+  <div class="marquee-track">
     <span class="marquee-item">🛡️ Police Verified Drivers<span class="marquee-dot"></span></span>
     <span class="marquee-item">⚡ 30-Minute Arrival<span class="marquee-dot"></span></span>
     <span class="marquee-item">🚫 Zero Alcohol Policy<span class="marquee-dot"></span></span>
@@ -565,17 +529,13 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     <div class="book-card reveal d2" id="bookCard">
       <div id="bookFormWrap">
         <div class="bc-title">Book a Driver</div>
-        <div class="bc-sub">Details emailed to your team · <strong>⚡️ We'll contact you shortly</strong></div>
+        <div class="bc-sub">Saved to Firebase · <strong>⚡️ We'll contact you shortly</strong></div>
         <form id="bookingForm" novalidate>
-          <input type="hidden" name="access_key" value="50830da6-b8d9-4306-8533-771dd6b744fa">
-          <input type="hidden" name="subject" value="🚗 New DriveBuddy Booking Request">
-          <input type="hidden" name="from_name" value="DriveBuddy Website">
-          <input type="hidden" name="replyto" value="nihalwarriors47@gmail.com">
           <div class="field-row">
             <div class="field">
               <label>Pickup Location</label>
               <span class="field-icon">📍</span>
-              <input type="text" name="pickup" id="f_pickup" placeholder="Your address / area" required>
+              <input type="text" name="pickup" id="f_pickup" placeholder="Your address / area" required autocomplete="street-address">
               <div class="field-err" id="e_pickup">Please enter pickup location</div>
             </div>
             <div class="field">
@@ -602,13 +562,13 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
             <div class="field">
               <label>Your Name</label>
               <span class="field-icon">👤</span>
-              <input type="text" name="name" id="f_name" placeholder="Full name" required>
+              <input type="text" name="name" id="f_name" placeholder="Full name" required autocomplete="name">
               <div class="field-err" id="e_name">Please enter your name</div>
             </div>
             <div class="field">
               <label>Mobile Number</label>
               <span class="field-icon">📱</span>
-              <input type="tel" name="phone" id="f_phone" placeholder="10-digit number" maxlength="10" required>
+              <input type="tel" name="phone" id="f_phone" placeholder="10-digit number" maxlength="10" required autocomplete="tel">
               <div class="field-err" id="e_phone">Valid 10-digit number required</div>
             </div>
           </div>
@@ -628,16 +588,16 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
           </button>
         </form>
         <div class="or-divider">or</div>
-        <a class="wa-alt" href="https://wa.me/919111473929" target="_blank" onclick="this.href='https://wa.me/919111473929?text='+encodeURIComponent(buildWAMsg())">
+        <a class="wa-alt" href="https://wa.me/919111473929" target="_blank" id="waAltBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
           Book instantly via WhatsApp instead
         </a>
-        <p class="form-note">🔒 Your details are private &amp; shared only with your assigned driver</p>
+        <p class="form-note">🔒 Your details are saved securely in Firebase</p>
       </div>
       <div class="book-success" id="bookSuccess">
         <div class="si">✅</div>
-        <h3>Booking Received!</h3>
-        <p>Thank you! Our team will call you on <strong id="successPhone" style="color:var(--cream)"></strong> within a few minutes to confirm your driver.<br><br>For urgent bookings, call us directly:</p>
+        <h3>Booking Saved!</h3>
+        <p>Your booking is confirmed in our system. We'll call <strong id="successPhone" style="color:var(--cream)"></strong> within a few minutes.<br><br>For urgent bookings, call us directly:</p>
         <a href="tel:919111473929" class="btn btn-primary" style="margin-top:1rem;width:100%;justify-content:center">📞 9111473929</a>
         <a class="wa-follow" href="#" id="waFollowBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
@@ -739,6 +699,82 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
   </div>
 </section>
 
+<!-- ── DRIVER REGISTRATION ── -->
+<section id="driver-register" style="background:var(--ink2)">
+  <div class="s-inner">
+    <div class="s-label">Join the Team</div>
+    <h2 class="s-h reveal">Become a <em>DriveBuddy Driver</em></h2>
+    <p class="s-p reveal" style="margin-bottom:0">Earn well. Work flexibly. Serve your city with pride.</p>
+
+    <div class="driver-section reveal">
+      <div id="driverFormWrap">
+        <div class="bc-title" style="font-size:1.4rem;margin-bottom:0.3rem">Driver Registration</div>
+        <div class="bc-sub">Your application is saved securely · <strong>Our team will call you within 24 hours</strong></div>
+        <form id="driverForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label>Full Name</label>
+              <span class="field-icon">👤</span>
+              <input type="text" id="d_name" placeholder="Your full name" required autocomplete="name">
+              <div class="field-err" id="de_name">Please enter your name</div>
+            </div>
+            <div class="field">
+              <label>Mobile Number</label>
+              <span class="field-icon">📱</span>
+              <input type="tel" id="d_phone" placeholder="10-digit number" maxlength="10" required autocomplete="tel">
+              <div class="field-err" id="de_phone">Valid 10-digit number required</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>City</label>
+              <span class="field-icon">📍</span>
+              <select id="d_city" required>
+                <option value="">Select your city</option>
+                <option>Raipur</option>
+                <option>Bhilai</option>
+                <option>Durg</option>
+                <option>Bilaspur</option>
+              </select>
+              <div class="field-err" id="de_city">Please select your city</div>
+            </div>
+            <div class="field">
+              <label>Years of Experience</label>
+              <span class="field-icon">🎓</span>
+              <input type="number" id="d_exp" placeholder="e.g. 5" min="1" max="50">
+            </div>
+          </div>
+          <div class="field">
+            <label>Driving License Number</label>
+            <span class="field-icon">🪪</span>
+            <input type="text" id="d_license" placeholder="e.g. CG04-20190012345" style="text-transform:uppercase">
+          </div>
+          <div class="field">
+            <label>Any Additional Info (optional)</label>
+            <span class="field-icon">💬</span>
+            <textarea id="d_notes" rows="2" placeholder="Vehicle types you drive, languages spoken, etc."></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="driverSubmitBtn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Submit Driver Application
+          </button>
+        </form>
+        <p class="form-note">🔒 Your details are stored securely and only accessed by our team</p>
+      </div>
+      <div class="driver-success" id="driverSuccess">
+        <div class="si">🚗</div>
+        <h3>Application Received!</h3>
+        <p>Thank you, <strong id="driverSuccessName" style="color:var(--cream)"></strong>! Your application has been saved. Our team in <strong id="driverSuccessCity" style="color:var(--gold)"></strong> will call you within 24 hours.</p>
+        <a href="https://wa.me/919111473929" class="wa-follow" style="margin-top:1.4rem" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
+          Message us on WhatsApp
+        </a>
+        <p style="margin-top:1.2rem;font-size:0.72rem;color:var(--cream-25);font-family:var(--mono);cursor:pointer" onclick="resetDriverForm()">← Submit another application</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="faq-bg">
   <div class="s-inner">
     <div style="text-align:center">
@@ -756,7 +792,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How are drivers verified?<span class="faq-arrow">▼</span></div><div class="faq-a">Every driver completes a 4-stage verification: Government ID, police background check, breathalyzer before every shift, and 5+ years professional driving experience. We conduct periodic re-verification.</div></div>
         <div class="faq-item" style="margin-top:0.7rem"><div class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<span class="faq-arrow">▼</span></div><div class="faq-a">We accept Cash, UPI (GPay, PhonePe, Paytm), and bank transfer. Simple and transparent — zero hidden charges whatsoever.</div></div>
         <div class="faq-item" style="margin-top:0.7rem"><div class="faq-q" onclick="toggleFaq(this)">Can I book for hospital emergencies?<span class="faq-arrow">▼</span></div><div class="faq-a">Yes — medical and emergency bookings are our absolute priority. Call 9111473929 immediately. We dispatch the nearest available driver as fast as possible, any hour of day or night.</div></div>
-        <div class="faq-item" style="margin-top:0.7rem"><div class="faq-q" onclick="toggleFaq(this)">How does the online booking form work?<span class="faq-arrow">▼</span></div><div class="faq-a">Fill in your details and submit — your booking request is emailed directly to our team. We will call you within minutes to confirm your driver.</div></div>
+        <div class="faq-item" style="margin-top:0.7rem"><div class="faq-q" onclick="toggleFaq(this)">How does the online booking form work?<span class="faq-arrow">▼</span></div><div class="faq-a">Fill in your details and submit — your booking is saved directly to Firebase and our team is notified instantly. We will call you within minutes to confirm your driver.</div></div>
       </div>
     </div>
   </div>
@@ -770,7 +806,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     <div class="cta-row reveal">
       <a href="tel:919111473929" class="btn btn-primary mag-btn" style="font-size:0.97rem;padding:1rem 2.4rem">📞 9111473929</a>
       <a href="https://wa.me/919111473929" class="btn-wa mag-btn">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
         WhatsApp Us
       </a>
     </div>
@@ -793,7 +829,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
     </div>
     <div class="ft-col"><h4>Services</h4><ul><li><a href="#services">Personal Driver</a></li><li><a href="#services">Medical Transport</a></li><li><a href="#services">Night Safety</a></li><li><a href="#services">Airport Service</a></li><li><a href="#services">Outstation Driver</a></li></ul></div>
     <div class="ft-col"><h4>Cities</h4><ul><li><a href="#cities">Raipur</a></li><li><a href="#cities">Bhilai</a></li><li><a href="#cities">Durg</a></li><li><a href="#cities">Bilaspur</a></li></ul></div>
-    <div class="ft-col"><h4>Company</h4><ul><li><a href="#why">Why Us</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="#why">Why Us</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#driver-register">Join as Driver</a></li></ul></div>
   </div>
   <div class="ft-bottom">
     <p>© 2026 DriveBuddy. All rights reserved. Chhattisgarh's first driver-on-demand platform.</p>
@@ -833,115 +869,349 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
   </div>
   <div class="chat-input-row">
     <textarea class="chat-inp" id="chatInp" rows="1" placeholder="Ask anything…" oninput="autoResize(this)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"></textarea>
-    <button class="chat-send" id="chatSend" onclick="sendMsg()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    <button class="chat-send" id="chatSend" onclick="sendMsg()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
   </div>
   <div class="chat-powered">🤖 Powered by Claude AI · DriveBuddy © 2026</div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  FIREBASE SDK                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCIGiv764yafx3HsmmbwpQuolKQcm64Ulo",
+  authDomain: "drive-buddy-acc4c.firebaseapp.com",
+  projectId: "drive-buddy-acc4c",
+  storageBucket: "drive-buddy-acc4c.firebasestorage.app",
+  messagingSenderId: "56159522240",
+  appId: "1:56159522240:web:d8454bea63494f064dcc25"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ── expose db to window so non-module scripts can use it ── */
+window._db = db;
+window._addDoc = addDoc;
+window._collection = collection;
+window._serverTimestamp = serverTimestamp;
+window._firebaseReady = true;
+
+/* ── BOOKING FORM SUBMIT ── */
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  /* Validate */
+  let valid = true;
+  const checks = [
+    {id:'f_pickup', err:'e_pickup', fn: v => v.trim().length > 1},
+    {id:'f_pkg',    err:'e_pkg',    fn: v => v !== ''},
+    {id:'f_name',   err:'e_name',   fn: v => v.trim().length > 1},
+    {id:'f_phone',  err:'e_phone',  fn: v => /^\d{10}$/.test(v)},
+  ];
+  checks.forEach(c => {
+    const el = document.getElementById(c.id);
+    const err = document.getElementById(c.err);
+    if (!c.fn(el.value)) {
+      el.style.borderColor = 'var(--red)';
+      err.style.display = 'block';
+      valid = false;
+    } else {
+      el.style.borderColor = '';
+      err.style.display = 'none';
+    }
+  });
+  if (!valid) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(8,7,10,0.3);border-top-color:var(--ink);border-radius:50%;animation:spin 0.7s linear infinite"></span> Saving…';
+
+  const bookingData = {
+    pickup:      document.getElementById('f_pickup').value.trim(),
+    destination: document.getElementById('f_drop').value.trim(),
+    package:     document.getElementById('f_pkg').value,
+    name:        document.getElementById('f_name').value.trim(),
+    phone:       document.getElementById('f_phone').value.trim(),
+    datetime:    document.getElementById('f_dt').value || null,
+    notes:       document.getElementById('f_notes').value.trim(),
+    status:      'new',
+    source:      'website',
+    createdAt:   serverTimestamp()
+  };
+
+  try {
+    const docRef = await addDoc(collection(db, 'bookings'), bookingData);
+    console.log('Booking saved:', docRef.id);
+    showToast('✅ Booking saved to Firebase!');
+    showBookingSuccess(bookingData.phone, bookingData);
+  } catch (err) {
+    console.error('Firebase error:', err);
+    showToast('⚠️ Could not save — opening WhatsApp instead', true);
+    window.open('https://wa.me/919111473929?text=' + encodeURIComponent(buildWAMsg()), '_blank');
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Confirm Booking Request';
+  }
+});
+
+/* ── DRIVER FORM SUBMIT ── */
+document.getElementById('driverForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  let valid = true;
+  const checks = [
+    {id:'d_name',  err:'de_name',  fn: v => v.trim().length > 1},
+    {id:'d_phone', err:'de_phone', fn: v => /^\d{10}$/.test(v)},
+    {id:'d_city',  err:'de_city',  fn: v => v !== ''},
+  ];
+  checks.forEach(c => {
+    const el = document.getElementById(c.id);
+    const err = document.getElementById(c.err);
+    if (!c.fn(el.value)) {
+      el.style.borderColor = 'var(--red)';
+      err.style.display = 'block';
+      valid = false;
+    } else {
+      el.style.borderColor = '';
+      err.style.display = 'none';
+    }
+  });
+  if (!valid) return;
+
+  const btn = document.getElementById('driverSubmitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(8,7,10,0.3);border-top-color:var(--ink);border-radius:50%;animation:spin 0.7s linear infinite"></span> Submitting…';
+
+  const driverData = {
+    name:       document.getElementById('d_name').value.trim(),
+    phone:      document.getElementById('d_phone').value.trim(),
+    city:       document.getElementById('d_city').value,
+    experience: document.getElementById('d_exp').value || null,
+    license:    document.getElementById('d_license').value.trim().toUpperCase() || null,
+    notes:      document.getElementById('d_notes').value.trim() || null,
+    status:     'pending',
+    source:     'website',
+    createdAt:  serverTimestamp()
+  };
+
+  try {
+    const docRef = await addDoc(collection(db, 'drivers'), driverData);
+    console.log('Driver saved:', docRef.id);
+    showToast('🚗 Driver application submitted!');
+    showDriverSuccess(driverData.name, driverData.city);
+  } catch (err) {
+    console.error('Firebase error:', err);
+    showToast('❌ Submission failed. Please try again.', true);
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Submit Driver Application';
+  }
+});
+</script>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  MAIN JS                                              -->
+<!-- ══════════════════════════════════════════════════════ -->
 <script>
+/* ── SPIN KEYFRAME ── */
+const ss = document.createElement('style');
+ss.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+document.head.appendChild(ss);
+
 /* ── SCROLL PROGRESS ── */
-window.addEventListener('scroll',()=>{
-  const p=(scrollY/(document.body.scrollHeight-innerHeight))*100;
-  document.getElementById('scrollBar').style.width=p+'%';
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>50);
-},{passive:true});
+window.addEventListener('scroll', () => {
+  const p = (scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+  document.getElementById('scrollBar').style.width = p + '%';
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 50);
+}, {passive: true});
 
-/* ── CURSOR GLOW (desktop) ── */
-const cg=document.getElementById('cursorGlow');
-document.addEventListener('mousemove',e=>{
-  cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';cg.style.opacity='1';
-},{passive:true});
+/* ── CURSOR GLOW ── */
+const cg = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+  cg.style.left = e.clientX + 'px';
+  cg.style.top = e.clientY + 'px';
+  cg.style.opacity = '1';
+}, {passive: true});
 
-/* ── DRAWER TOGGLE ── */
-function toggleDrawer(){
-  const h=document.getElementById('hamburger'),d=document.getElementById('drawer'),b=document.getElementById('drawerBg');
-  const o=d.classList.toggle('open');
-  b.classList.toggle('open',o);h.classList.toggle('open',o);
-  document.body.style.overflow=o?'hidden':'';
+/* ── DRAWER ── */
+function toggleDrawer() {
+  const h = document.getElementById('hamburger');
+  const d = document.getElementById('drawer');
+  const b = document.getElementById('drawerBg');
+  const o = d.classList.toggle('open');
+  b.classList.toggle('open', o);
+  h.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
 }
 
-/* ── REVEAL ON SCROLL ── */
-const revObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+/* ── TOAST ── */
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* ── REVEAL ── */
+const revObs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
 /* ── COUNTER ── */
-function countUp(el,target){
-  const isMin=el.closest('.stat-item').querySelector('.stat-l').textContent.includes('Min');
-  let n=0;const step=target/1800*16;
-  const id=setInterval(()=>{n=Math.min(n+step,target);el.textContent=Math.floor(n)+(isMin?'min':'+');if(n>=target)clearInterval(id)},16);
+function countUp(el, target) {
+  const isMin = el.closest('.stat-item').querySelector('.stat-l').textContent.includes('Min');
+  let n = 0;
+  const step = target / 1800 * 16;
+  const id = setInterval(() => {
+    n = Math.min(n + step, target);
+    el.textContent = Math.floor(n) + (isMin ? 'min' : '+');
+    if (n >= target) clearInterval(id);
+  }, 16);
 }
-const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target){countUp(e.target,+e.target.dataset.target);cObs.unobserve(e.target)}})},{threshold:0.5});
-document.querySelectorAll('[data-target]').forEach(el=>cObs.observe(el));
+const cObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.target) {
+      countUp(e.target, +e.target.dataset.target);
+      cObs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('[data-target]').forEach(el => cObs.observe(el));
 
 /* ── FAQ ── */
-function toggleFaq(q){q.parentElement.classList.toggle('open')}
+function toggleFaq(q) { q.parentElement.classList.toggle('open'); }
 
 /* ── SCROLL TO BOOK ── */
-function scrollToBook(pkg){
-  document.getElementById('f_pkg').value=pkg;
-  document.getElementById('bookCard').scrollIntoView({behavior:'smooth',block:'center'});
-  setTimeout(()=>document.getElementById('f_pickup').focus(),600);
+function scrollToBook(pkg) {
+  document.getElementById('f_pkg').value = pkg;
+  document.getElementById('bookCard').scrollIntoView({behavior: 'smooth', block: 'center'});
+  setTimeout(() => document.getElementById('f_pickup').focus(), 600);
 }
 
-/* ── WA MESSAGE BUILD ── */
-function buildWAMsg(){
-  const p=document.getElementById('f_pickup').value,d=document.getElementById('f_drop').value,pk=document.getElementById('f_pkg').value,n=document.getElementById('f_name').value,ph=document.getElementById('f_phone').value;
+/* ── SET MIN DATE ── */
+document.getElementById('f_dt').min = new Date().toISOString().slice(0, 16);
+
+/* ── WA MESSAGE ── */
+function buildWAMsg() {
+  const p = document.getElementById('f_pickup').value;
+  const d = document.getElementById('f_drop').value;
+  const pk = document.getElementById('f_pkg').value;
+  const n = document.getElementById('f_name').value;
+  const ph = document.getElementById('f_phone').value;
   return `🚗 *DriveBuddy Booking*\n\n👤 Name: ${n||'Not entered'}\n📱 Phone: ${ph||'Not entered'}\n📍 Pickup: ${p||'Not entered'}\n🎯 Drop: ${d||'Not specified'}\n⏱ Package: ${pk||'Not selected'}\n\n_From DriveBuddy website_`;
 }
 
-/* ── RIPPLE EFFECT ON BUTTONS ── */
-document.querySelectorAll('.btn,.submit-btn,.pc-btn,.d-call,.d-wa').forEach(btn=>{
-  btn.addEventListener('click',function(e){
-    const r=document.createElement('span');r.className='ripple';
-    const rect=this.getBoundingClientRect();
-    const size=Math.max(rect.width,rect.height);
-    r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
-    this.style.position='relative';this.style.overflow='hidden';
-    this.appendChild(r);setTimeout(()=>r.remove(),600);
+/* ── WA ALT BUTTON ── */
+document.getElementById('waAltBtn').addEventListener('click', function() {
+  this.href = 'https://wa.me/919111473929?text=' + encodeURIComponent(buildWAMsg());
+});
+
+/* ── BOOKING SUCCESS / RESET ── */
+function showBookingSuccess(phone, data) {
+  document.getElementById('successPhone').textContent = phone;
+  document.getElementById('waFollowBtn').href = 'https://wa.me/919111473929?text=' + encodeURIComponent(buildWAMsg());
+  document.getElementById('bookFormWrap').style.display = 'none';
+  document.getElementById('bookSuccess').style.display = 'block';
+}
+function resetForm() {
+  document.getElementById('bookSuccess').style.display = 'none';
+  document.getElementById('bookFormWrap').style.display = 'block';
+  document.getElementById('bookingForm').reset();
+  document.getElementById('f_dt').min = new Date().toISOString().slice(0, 16);
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Confirm Booking Request';
+}
+
+/* ── DRIVER SUCCESS / RESET ── */
+function showDriverSuccess(name, city) {
+  document.getElementById('driverSuccessName').textContent = name;
+  document.getElementById('driverSuccessCity').textContent = city;
+  document.getElementById('driverFormWrap').style.display = 'none';
+  document.getElementById('driverSuccess').style.display = 'block';
+}
+function resetDriverForm() {
+  document.getElementById('driverSuccess').style.display = 'none';
+  document.getElementById('driverFormWrap').style.display = 'block';
+  document.getElementById('driverForm').reset();
+  const btn = document.getElementById('driverSubmitBtn');
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Submit Driver Application';
+}
+
+/* ── PHONE VALIDATION ── */
+document.getElementById('f_phone').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});
+document.getElementById('d_phone').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});
+
+/* ── RIPPLE ── */
+document.querySelectorAll('.btn,.submit-btn,.pc-btn,.d-call,.d-wa').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 600);
   });
 });
 
-/* ── HERO PARTICLE CANVAS ── */
-(function(){
-  const canvas=document.getElementById('heroCanvas');
-  const ctx=canvas.getContext('2d');
-  let W,H,particles=[];
-  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight}
-  resize();window.addEventListener('resize',resize,{passive:true});
-  class Particle{
-    constructor(){this.reset()}
-    reset(){
-      this.x=Math.random()*W;this.y=Math.random()*H;
-      this.size=Math.random()*2+0.5;
-      this.speedX=(Math.random()-0.5)*0.4;this.speedY=(Math.random()-0.5)*0.4;
-      this.opacity=Math.random()*0.5+0.1;this.life=Math.random()*200+100;
-      this.maxLife=this.life;
+/* ── HERO CANVAS ── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize, {passive: true});
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W; this.y = Math.random() * H;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.opacity = Math.random() * 0.5 + 0.1;
+      this.life = Math.random() * 200 + 100;
+      this.maxLife = this.life;
     }
-    update(){
-      this.x+=this.speedX;this.y+=this.speedY;this.life--;
-      if(this.life<=0||this.x<0||this.x>W||this.y<0||this.y>H)this.reset();
+    update() {
+      this.x += this.speedX; this.y += this.speedY; this.life--;
+      if (this.life <= 0 || this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
     }
-    draw(){
-      const a=(this.life/this.maxLife)*this.opacity;
-      ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-      ctx.fillStyle=`rgba(201,153,58,${a})`;ctx.fill();
+    draw() {
+      const a = (this.life / this.maxLife) * this.opacity;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,153,58,${a})`; ctx.fill();
     }
   }
-  for(let i=0;i<60;i++)particles.push(new Particle());
-  function animate(){
-    ctx.clearRect(0,0,W,H);
-    particles.forEach(p=>{p.update();p.draw()});
-    /* draw connecting lines between close particles */
-    for(let i=0;i<particles.length;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<120){
+  for (let i = 0; i < 60; i++) particles.push(new Particle());
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
           ctx.beginPath();
-          ctx.moveTo(particles[i].x,particles[i].y);
-          ctx.lineTo(particles[j].x,particles[j].y);
-          ctx.strokeStyle=`rgba(201,153,58,${0.05*(1-dist/120)})`;
-          ctx.lineWidth=0.5;ctx.stroke();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(201,153,58,${0.05 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5; ctx.stroke();
         }
       }
     }
@@ -950,74 +1220,159 @@ document.querySelectorAll('.btn,.submit-btn,.pc-btn,.d-call,.d-wa').forEach(btn=
   animate();
 })();
 
-/* ── MAGNETIC BUTTONS (desktop) ── */
-if(window.innerWidth>768){
-  document.querySelectorAll('.mag-btn').forEach(btn=>{
-    btn.addEventListener('mousemove',function(e){
-      const rect=this.getBoundingClientRect();
-      const x=e.clientX-rect.left-rect.width/2;
-      const y=e.clientY-rect.top-rect.height/2;
-      this.style.transform=`translate(${x*0.18}px,${y*0.25}px)`;
+/* ── MAGNETIC BUTTONS ── */
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.mag-btn').forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      this.style.transform = `translate(${x * 0.18}px,${y * 0.25}px)`;
     });
-    btn.addEventListener('mouseleave',function(){
-      this.style.transform='';
-    });
+    btn.addEventListener('mouseleave', function() { this.style.transform = ''; });
   });
 }
 
 /* ── CARD 3D TILT ── */
-if(window.innerWidth>768){
-  document.querySelectorAll('.why-card,.rev-card,.city-card,.pc').forEach(card=>{
-    card.addEventListener('mousemove',function(e){
-      const rect=this.getBoundingClientRect();
-      const x=(e.clientX-rect.left)/rect.width-0.5;
-      const y=(e.clientY-rect.top)/rect.height-0.5;
-      this.style.transform=`perspective(600px) rotateX(${-y*8}deg) rotateY(${x*8}deg) translateY(-6px)`;
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.why-card,.rev-card,.city-card,.pc').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      this.style.transform = `perspective(600px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-6px)`;
     });
-    card.addEventListener('mouseleave',function(){
-      this.style.transform='';
-    });
+    card.addEventListener('mouseleave', function() { this.style.transform = ''; });
   });
 }
 
-/* ── BOOKING FORM ── */
-document.getElementById('bookingForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  let valid=true;
-  [{id:'f_pickup',err:'e_pickup',check:v=>v.trim().length>1},{id:'f_pkg',err:'e_pkg',check:v=>v!==''},{id:'f_name',err:'e_name',check:v=>v.trim().length>1},{id:'f_phone',err:'e_phone',check:v=>/^\d{10}$/.test(v)}].forEach(f=>{
-    const el=document.getElementById(f.id),err=document.getElementById(f.err);
-    if(!f.check(el.value)){el.style.borderColor='var(--red)';err.style.display='block';valid=false}else{el.style.borderColor='';err.style.display='none'}
-  });
-  if(!valid)return;
-  const btn=document.getElementById('submitBtn');btn.disabled=true;
-  if(!document.getElementById('spinStyle')){const s=document.createElement('style');s.id='spinStyle';s.textContent='@keyframes spin{to{transform:rotate(360deg)}}';document.head.appendChild(s);}
-  btn.innerHTML='<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(8,7,10,0.3);border-top-color:var(--ink);border-radius:50%;animation:spin 0.7s linear infinite"></span> Sending…';
-  try{
-    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});
-    const data=await res.json();
-    if(data.success){showSuccess();}else{fallbackWA();}
-  }catch(err){fallbackWA();}
-});
-function showSuccess(){document.getElementById('successPhone').textContent=document.getElementById('f_phone').value;document.getElementById('waFollowBtn').href='https://wa.me/919111473929?text='+encodeURIComponent(buildWAMsg());document.getElementById('bookFormWrap').style.display='none';document.getElementById('bookSuccess').style.display='block';}
-function fallbackWA(){window.open('https://wa.me/919111473929?text='+encodeURIComponent(buildWAMsg()),'_blank');const btn=document.getElementById('submitBtn');btn.disabled=false;btn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Confirm Booking Request';}
-function resetForm(){document.getElementById('bookSuccess').style.display='none';document.getElementById('bookFormWrap').style.display='block';document.getElementById('bookingForm').reset();const btn=document.getElementById('submitBtn');btn.disabled=false;btn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Confirm Booking Request';}
-document.getElementById('f_phone').addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,10)});
+/* ──────────────────────────────────────────────
+   AI CHAT — uses Cloudflare Worker proxy
+   (API key lives on the worker, never in browser)
+   ────────────────────────────────────────────── */
+const SYSTEM = `You are the AI assistant for DriveBuddy — Chhattisgarh's first driver-on-demand platform. Contact: 9111473929. Cities: Raipur, Bhilai, Durg, Bilaspur. Prices: 1hr ₹300, 3hr ₹600, Full Day ₹1000-1200, Outstation ₹1200-1500, Night ₹500. All drivers police-verified, breathalyzer tested, 5+ years experience. Available 24x7. Be warm, concise, helpful. Reply in same language as user (Hindi or English).`;
+let chatStreaming = false;
+document.getElementById('initTime').textContent = new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
 
-/* ── AI CHAT ── */
-const SYSTEM=`You are the AI assistant for DriveBuddy — Chhattisgarh's first driver-on-demand platform. Contact: 9111473929. Cities: Raipur, Bhilai, Durg, Bilaspur. Prices: 1hr ₹300, 3hr ₹600, Full Day ₹1000-1200, Outstation ₹1200-1500, Night ₹500. All drivers police-verified, breathalyzer tested, 5+ years experience. Available 24x7. Be warm, concise, helpful. Reply in same language as user.`;
-let chatOpen=false,chatStreaming=false;
-document.getElementById('initTime').textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-function getT(){return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}
-function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px'}
-function toggleChat(){chatOpen=!chatOpen;const p=document.getElementById('chatPanel');if(chatOpen){p.style.display='flex';requestAnimationFrame(()=>p.classList.add('open'));setTimeout(()=>document.getElementById('chatInp').focus(),400)}else{p.classList.remove('open');setTimeout(()=>p.style.display='none',400)}}
-function addMsg(text,role){const msgs=document.getElementById('chatMsgs'),wrap=document.createElement('div');wrap.className='msg-wrap '+(role==='bot'?'bot-wrap':'user-wrap');if(role==='bot'){const av=document.createElement('div');av.className='mini-av';av.innerHTML='<svg width="14" height="14" viewBox="0 0 48 48"><use href="#logo-icon"/></svg>';const inner=document.createElement('div'),d=document.createElement('div');d.className='msg bot';d.innerHTML=text;const t=document.createElement('div');t.className='msg-time';t.textContent=getT();inner.appendChild(d);inner.appendChild(t);wrap.appendChild(av);wrap.appendChild(inner);msgs.appendChild(wrap);msgs.scrollTop=msgs.scrollHeight;return d;}else{const inner=document.createElement('div'),d=document.createElement('div');d.className='msg user';d.textContent=text;const t=document.createElement('div');t.className='msg-time';t.textContent=getT();inner.appendChild(d);inner.appendChild(t);wrap.appendChild(inner);msgs.appendChild(wrap);msgs.scrollTop=msgs.scrollHeight;return d;}}
-function addTyping(){const msgs=document.getElementById('chatMsgs'),wrap=document.createElement('div');wrap.className='msg-wrap bot-wrap';wrap.id='typWrap';const av=document.createElement('div');av.className='mini-av';av.innerHTML='<svg width="14" height="14" viewBox="0 0 48 48"><use href="#logo-icon"/></svg>';const d=document.createElement('div');d.className='typing';d.innerHTML='<span></span><span></span><span></span>';wrap.appendChild(av);wrap.appendChild(d);msgs.appendChild(wrap);msgs.scrollTop=msgs.scrollHeight;}
-function removeTyping(){const t=document.getElementById('typWrap');if(t)t.remove()}
-function sendQuick(t){document.getElementById('quickBtns').style.display='none';document.getElementById('chatInp').value=t;sendMsg();}
-const chatHistory=[];
-async function sendMsg(){if(chatStreaming)return;const inp=document.getElementById('chatInp'),text=inp.value.trim();if(!text)return;inp.value='';inp.style.height='auto';document.getElementById('quickBtns').style.display='none';addMsg(text,'user');chatHistory.push({role:'user',content:text});chatStreaming=true;document.getElementById('chatSend').disabled=true;addTyping();
-try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,system:SYSTEM,stream:true,messages:chatHistory.slice(-12)})});removeTyping();if(!res.ok){const fb=localReply(text);addMsg(fb,'bot');chatHistory.push({role:'assistant',content:fb});chatStreaming=false;document.getElementById('chatSend').disabled=false;return}const botEl=addMsg('','bot'),reader=res.body.getReader(),dec=new TextDecoder();let full='';while(true){const{done,value}=await reader.read();if(done)break;const chunk=dec.decode(value);for(const line of chunk.split('\n')){if(line.startsWith('data: ')){const data=line.slice(6).trim();if(data==='[DONE]')continue;try{const j=JSON.parse(data);if(j.type==='content_block_delta'&&j.delta?.text){full+=j.delta.text;botEl.innerHTML=full.replace(/\n/g,'<br>');document.getElementById('chatMsgs').scrollTop=99999}}catch(e){}}}}if(full)chatHistory.push({role:'assistant',content:full});else{const fb=localReply(text);botEl.innerHTML=fb;chatHistory.push({role:'assistant',content:fb})}}catch(err){removeTyping();const fb=localReply(text);addMsg(fb,'bot');chatHistory.push({role:'assistant',content:fb})}chatStreaming=false;document.getElementById('chatSend').disabled=false;}
-function localReply(q){const l=q.toLowerCase();if(l.match(/price|cost|rate|₹|rupee|kitna/))return '💰 Rates: <strong>1hr ₹300 · 3hr ₹600 · Full Day ₹1000–1200 · Outstation ₹1200–1500 · Night ₹500</strong>. Zero hidden charges. Call <strong>9111473929</strong>.';if(l.match(/outstation|highway/))return '🛣️ Outstation from ₹1200–₹1500. Call <strong>9111473929</strong> for a custom quote.';if(l.match(/book|hire|reserve/))return '📅 Use the booking form on this page or call <strong>9111473929</strong>. Driver in 30 min!';if(l.match(/city|cities|raipur|bhilai|durg|bilaspur/))return '📍 We serve <strong>Raipur, Bhilai, Durg &amp; Bilaspur</strong> — 30-min guaranteed arrival!';if(l.match(/night|raat|late/))return '🌙 Night Driver 8PM–6AM at ₹500. Call <strong>9111473929</strong>!';if(l.match(/hospital|medical|emergency/))return '🏥 Emergency priority! Call <strong>9111473929</strong> immediately.';if(l.match(/verify|safe|police/))return '🛡️ All drivers: Govt ID · Police background · Breathalyzer every shift · 5+ yrs experience.';if(l.match(/airport|flight/))return '✈️ Airport service with real-time flight tracking. Call <strong>9111473929</strong>.';if(l.match(/pay|upi|cash/))return '💳 Cash · UPI (GPay/PhonePe/Paytm) · Bank transfer. Zero hidden charges.';return '🚗 Call <strong>9111473929</strong> or use the booking form. Available 24×7!';}
+function getT() { return new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}); }
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 90) + 'px'; }
+
+/* Fixed: use visibility/opacity/pointer-events — no display toggle */
+function toggleChat() {
+  const p = document.getElementById('chatPanel');
+  const isOpen = p.classList.toggle('open');
+  if (isOpen) setTimeout(() => document.getElementById('chatInp').focus(), 400);
+}
+
+function addMsg(text, role) {
+  const msgs = document.getElementById('chatMsgs');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-wrap ' + (role === 'bot' ? 'bot-wrap' : 'user-wrap');
+  if (role === 'bot') {
+    const av = document.createElement('div'); av.className = 'mini-av';
+    av.innerHTML = '<svg width="14" height="14" viewBox="0 0 48 48"><use href="#logo-icon"/></svg>';
+    const inner = document.createElement('div');
+    const d = document.createElement('div'); d.className = 'msg bot'; d.innerHTML = text;
+    const t = document.createElement('div'); t.className = 'msg-time'; t.textContent = getT();
+    inner.appendChild(d); inner.appendChild(t);
+    wrap.appendChild(av); wrap.appendChild(inner);
+    msgs.appendChild(wrap); msgs.scrollTop = msgs.scrollHeight;
+    return d;
+  } else {
+    const inner = document.createElement('div');
+    const d = document.createElement('div'); d.className = 'msg user'; d.textContent = text;
+    const t = document.createElement('div'); t.className = 'msg-time'; t.textContent = getT();
+    inner.appendChild(d); inner.appendChild(t);
+    wrap.appendChild(inner); msgs.appendChild(wrap); msgs.scrollTop = msgs.scrollHeight;
+    return d;
+  }
+}
+
+function addTyping() {
+  const msgs = document.getElementById('chatMsgs');
+  const wrap = document.createElement('div'); wrap.className = 'msg-wrap bot-wrap'; wrap.id = 'typWrap';
+  const av = document.createElement('div'); av.className = 'mini-av';
+  av.innerHTML = '<svg width="14" height="14" viewBox="0 0 48 48"><use href="#logo-icon"/></svg>';
+  const d = document.createElement('div'); d.className = 'typing';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  wrap.appendChild(av); wrap.appendChild(d);
+  msgs.appendChild(wrap); msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() { const t = document.getElementById('typWrap'); if (t) t.remove(); }
+
+function sendQuick(t) {
+  document.getElementById('quickBtns').style.display = 'none';
+  document.getElementById('chatInp').value = t;
+  sendMsg();
+}
+
+const chatHistory = [];
+async function sendMsg() {
+  if (chatStreaming) return;
+  const inp = document.getElementById('chatInp');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value = ''; inp.style.height = 'auto';
+  document.getElementById('quickBtns').style.display = 'none';
+  addMsg(text, 'user');
+  chatHistory.push({role: 'user', content: text});
+  chatStreaming = true;
+  document.getElementById('chatSend').disabled = true;
+  addTyping();
+
+  /* Check if worker URL is configured */
+  if (!WORKER_URL || WORKER_URL.includes('YOUR-WORKER')) {
+    removeTyping();
+    const fb = localReply(text);
+    addMsg(fb, 'bot');
+    chatHistory.push({role: 'assistant', content: fb});
+    chatStreaming = false;
+    document.getElementById('chatSend').disabled = false;
+    return;
+  }
+
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 400,
+        system: SYSTEM,
+        messages: chatHistory.slice(-12)
+      })
+    });
+    removeTyping();
+    if (!res.ok) throw new Error('Worker error ' + res.status);
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || localReply(text);
+    addMsg(reply, 'bot');
+    chatHistory.push({role: 'assistant', content: reply});
+  } catch (err) {
+    removeTyping();
+    const fb = localReply(text);
+    addMsg(fb, 'bot');
+    chatHistory.push({role: 'assistant', content: fb});
+  }
+  chatStreaming = false;
+  document.getElementById('chatSend').disabled = false;
+}
+
+function localReply(q) {
+  const l = q.toLowerCase();
+  if (l.match(/price|cost|rate|₹|rupee|kitna/)) return '💰 Rates: <strong>1hr ₹300 · 3hr ₹600 · Full Day ₹1000–1200 · Outstation ₹1200–1500 · Night ₹500</strong>. Zero hidden charges. Call <strong>9111473929</strong>.';
+  if (l.match(/outstation|highway/)) return '🛣️ Outstation from ₹1200–₹1500. Call <strong>9111473929</strong> for a custom quote.';
+  if (l.match(/book|hire|reserve/)) return '📅 Use the booking form on this page or call <strong>9111473929</strong>. Driver in 30 min!';
+  if (l.match(/city|cities|raipur|bhilai|durg|bilaspur/)) return '📍 We serve <strong>Raipur, Bhilai, Durg &amp; Bilaspur</strong> — 30-min guaranteed arrival!';
+  if (l.match(/night|raat|late/)) return '🌙 Night Driver 8PM–6AM at ₹500. Call <strong>9111473929</strong>!';
+  if (l.match(/hospital|medical|emergency/)) return '🏥 Emergency priority! Call <strong>9111473929</strong> immediately.';
+  if (l.match(/verify|safe|police/)) return '🛡️ All drivers: Govt ID · Police background · Breathalyzer every shift · 5+ yrs experience.';
+  if (l.match(/airport|flight/)) return '✈️ Airport service with real-time flight tracking. Call <strong>9111473929</strong>.';
+  if (l.match(/pay|upi|cash/)) return '💳 Cash · UPI (GPay/PhonePe/Paytm) · Bank transfer. Zero hidden charges.';
+  if (l.match(/driver|join|register|work/)) return '🚗 Want to join as a driver? Fill the Driver Registration form below or call <strong>9111473929</strong>!';
+  return '🚗 Call <strong>9111473929</strong> or use the booking form. Available 24×7!';
+}
 </script>
+
 </body>
 </html>
