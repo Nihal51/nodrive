@@ -216,11 +216,12 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
 .mascot-scene{
   position:relative;display:flex;flex-direction:column;align-items:center;width:100%;
 }
-.mascot-character{
+  .mascot-character{
   position:relative;z-index:2;
   animation:mascotBob 4s ease-in-out infinite;
   transform-origin:bottom center;
-  width:260px;
+  width:200px;
+  margin:0 auto;
 }
 .mascot-character img{
   width:100%;height:auto;
@@ -230,9 +231,8 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
   0%,100%{transform:translateY(0) rotate(-0.5deg)}
   25%{transform:translateY(-8px) rotate(0.5deg)}
   75%{transform:translateY(-4px) rotate(-0.3deg)}
-}
-.mascot-speech{
-  position:absolute;top:-20px;right:-20px;
+}.mascot-speech{
+  position:absolute;top:-14px;right:-10px;
   background:var(--gold);color:#1A1310;
   font-family:var(--sans);font-size:0.72rem;font-weight:700;
   padding:0.45rem 0.9rem;border-radius:20px;
@@ -262,8 +262,8 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
   75%{transform:scaleX(0.9);opacity:0.4}
 }
 /* Road strip under mascot */
-.mascot-road{
-  width:100%;max-width:380px;height:28px;margin-top:2px;
+  .mascot-road{
+  width:100%;max-width:280px;height:28px;margin-top:2px;
   background:linear-gradient(180deg,#2A2010,#1A1208);
   border-radius:14px;position:relative;overflow:hidden;
 }
@@ -520,7 +520,7 @@ footer{background:var(--ink2);border-top:1px solid var(--rim);padding:5rem 5% 2.
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;gap:2rem;padding:8rem 5% 5rem;text-align:center}
   .trust-row{justify-content:center}.hero-btns{justify-content:center}.hero-p{margin:0 auto 2.4rem}
-  .hero-right{width:100%}.mascot-character{width:200px}
+  .hero-right{width:100%}.mascot-character{width:160px} 
   .srv-grid{grid-template-columns:1fr}
   .stats-inner{grid-template-columns:1fr 1fr}
   .stat-item{border-right:none;border-bottom:1px solid rgba(26,19,16,0.2);padding:1.8rem}
