@@ -24,6 +24,7 @@ html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased;ov
 }
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x:hidden;line-height:1.6}
 body.splash-active{overflow:hidden}
+
 body.splash-active > *:not(#splashScreen){visibility:hidden}
 
 /* ══ EPIC SPLASH SCREEN ══ */
@@ -113,6 +114,7 @@ body.splash-active > *:not(#splashScreen){visibility:hidden}
   border-radius:7px;transition:height 0.1s linear;height:0%;
 }
 @media(max-width:768px){#scrollRoad{display:none}}
+
 
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--gold)}
@@ -756,6 +758,8 @@ body.site-ready .book-card{animation:cardEnter 0.82s var(--ease) 0.38s both,card
   </div>
 </div>
 
+
+
 <div id="scrollBar"></div>
 <div id="cursorGlow"></div>
 <div id="motionBackdrop" aria-hidden="true">
@@ -769,6 +773,8 @@ body.site-ready .book-card{animation:cardEnter 0.82s var(--ease) 0.38s both,card
   <div class="motion-road s3"></div>
 </div>
 <div class="toast" id="toast"></div>
+
+
 
 <nav id="nav">
   <a href="#" class="logo-mark">
@@ -1227,6 +1233,7 @@ document.getElementById('driverForm').addEventListener('submit',async function(e
 <script>
 const ss=document.createElement('style');ss.textContent='@keyframes spin{to{transform:rotate(360deg)}}';document.head.appendChild(ss);
 
+
 /* ══ SPLASH ══ */
 (function(){
   const splash=document.getElementById('splashScreen');
@@ -1238,6 +1245,7 @@ const ss=document.createElement('style');ss.textContent='@keyframes spin{to{tran
     document.body.classList.add('site-ready');
     setTimeout(()=>splash.remove(),650);
   },2200);
+
 })();
 
 /* ══ SCROLL + ROAD ANIMATION ══ */
