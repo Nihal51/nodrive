@@ -26,116 +26,64 @@ body{background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x
 body.splash-active{overflow:hidden}
 body.splash-active > *:not(#splashScreen){visibility:hidden}
 
-/* ══ EPIC SPLASH SCREEN ══ */
 #splashScreen{
-  position:fixed;inset:0;z-index:12000;
-  background:#0E0B08;
+  position:fixed;inset:0;z-index:12000;background:#0E0B08;
   display:flex;align-items:center;justify-content:center;flex-direction:column;
   transition:opacity 0.6s var(--ease),visibility 0.6s;
 }
 #splashScreen.hide{opacity:0;visibility:hidden;pointer-events:none}
-.splash-bg-road{
-  position:absolute;bottom:0;left:0;right:0;height:80px;
-  background:linear-gradient(180deg,transparent,#1A1208 40%,#1A1208);
-  overflow:hidden;
-}
-.splash-road-line{
-  position:absolute;bottom:20px;left:-100%;width:400%;height:4px;
-  background:repeating-linear-gradient(90deg,transparent 0,transparent 30px,#C9993A 30px,#C9993A 70px);
-  animation:roadSlide 1.5s linear forwards;
-}
+.splash-bg-road{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,#1A1208 40%,#1A1208);overflow:hidden}
+.splash-road-line{position:absolute;bottom:20px;left:-100%;width:400%;height:4px;background:repeating-linear-gradient(90deg,transparent 0,transparent 30px,#C9993A 30px,#C9993A 70px);animation:roadSlide 1.5s linear forwards}
 @keyframes roadSlide{0%{left:-100%}100%{left:0%}}
-.splash-car-anim{
-  position:absolute;bottom:30px;font-size:2.2rem;
-  animation:carDrive 1.4s var(--ease) 0.3s forwards;
-  opacity:0;transform:translateX(-200px);
-}
-@keyframes carDrive{
-  0%{opacity:0;transform:translateX(-200px)}
-  30%{opacity:1}
-  100%{opacity:1;transform:translateX(calc(50vw - 60px))}
-}
-.splash-logo-wrap{
-  display:flex;flex-direction:column;align-items:center;gap:1rem;
-  opacity:0;transform:scale(0.6) translateY(20px);
-  animation:splashLogoIn 0.7s var(--ease) 0.8s forwards;
-}
-@keyframes splashLogoIn{
-  to{opacity:1;transform:scale(1) translateY(0)}
-}
-.splash-db-logo{
-  width:120px;height:auto;
-  filter:drop-shadow(0 0 30px rgba(201,153,58,0.6));
-}
-.splash-title{
-  font-family:var(--serif);font-size:2.2rem;font-weight:700;color:#F2EAD8;
-  letter-spacing:-0.02em;line-height:1;
-}
+.splash-car-anim{position:absolute;bottom:30px;font-size:2.2rem;animation:carDrive 1.4s var(--ease) 0.3s forwards;opacity:0;transform:translateX(-200px)}
+@keyframes carDrive{0%{opacity:0;transform:translateX(-200px)}30%{opacity:1}100%{opacity:1;transform:translateX(calc(50vw - 60px))}}
+.splash-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;opacity:0;transform:scale(0.6) translateY(20px);animation:splashLogoIn 0.7s var(--ease) 0.8s forwards}
+@keyframes splashLogoIn{to{opacity:1;transform:scale(1) translateY(0)}}
+.splash-db-logo{width:120px;height:auto;filter:drop-shadow(0 0 30px rgba(201,153,58,0.6))}
+.splash-title{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:#F2EAD8;letter-spacing:-0.02em;line-height:1}
 .splash-title span{color:var(--gold)}
-.splash-tagline{
-  font-family:var(--mono);font-size:0.65rem;color:rgba(201,153,58,0.6);
-  letter-spacing:0.2em;text-transform:uppercase;margin-top:0.3rem;
-}
-.splash-glow{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:300px;height:300px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,153,58,0.15),transparent 70%);
-  animation:glowPulse 2s ease infinite;pointer-events:none;
-}
+.splash-tagline{font-family:var(--mono);font-size:0.65rem;color:rgba(201,153,58,0.6);letter-spacing:0.2em;text-transform:uppercase;margin-top:0.3rem}
+.splash-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,153,58,0.15),transparent 70%);animation:glowPulse 2s ease infinite;pointer-events:none}
 @keyframes glowPulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.3)}}
 
-/* ══ SCROLL ROAD ANIMATION ══ */
-#scrollRoad{
-  position:fixed;right:16px;top:50%;transform:translateY(-50%);
-  z-index:900;display:flex;flex-direction:column;align-items:center;gap:0;
-  pointer-events:none;opacity:0;transition:opacity 0.3s;
-}
+#scrollRoad{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;align-items:center;gap:0;pointer-events:none;opacity:0;transition:opacity 0.3s}
 #scrollRoad.visible{opacity:1}
-.road-track{
-  width:14px;height:260px;
-  background:linear-gradient(180deg,transparent,rgba(201,153,58,0.12) 10%,rgba(201,153,58,0.12) 90%,transparent);
-  border-radius:7px;position:relative;overflow:hidden;
-}
-.road-track::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:2px;height:100%;
-  background:repeating-linear-gradient(180deg,var(--gold) 0px,var(--gold) 6px,transparent 6px,transparent 14px);
-  opacity:0.4;
-}
-.road-car{
-  position:absolute;left:50%;transform:translateX(-50%) rotate(180deg);
-  font-size:0.9rem;transition:top 0.1s linear;top:10px;
-  filter:drop-shadow(0 2px 6px rgba(201,153,58,0.5));
-}
-.road-progress{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(180deg,transparent,rgba(201,153,58,0.3));
-  border-radius:7px;transition:height 0.1s linear;height:0%;
-}
+.road-track{width:14px;height:260px;background:linear-gradient(180deg,transparent,rgba(201,153,58,0.12) 10%,rgba(201,153,58,0.12) 90%,transparent);border-radius:7px;position:relative;overflow:hidden}
+.road-track::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:repeating-linear-gradient(180deg,var(--gold) 0px,var(--gold) 6px,transparent 6px,transparent 14px);opacity:0.4}
+.road-car{position:absolute;left:50%;transform:translateX(-50%) rotate(180deg);font-size:0.9rem;transition:top 0.1s linear;top:10px;filter:drop-shadow(0 2px 6px rgba(201,153,58,0.5))}
+.road-progress{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent,rgba(201,153,58,0.3));border-radius:7px;transition:height 0.1s linear;height:0%}
 @media(max-width:768px){#scrollRoad{display:none}}
 
 a{text-decoration:none;color:inherit}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--gold)}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;outline:none;border:none;background:none}
+button{cursor:pointer}
+li{list-style:none}
+img{display:block;max-width:100%;height:auto}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
 
 body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.025'/%3E%3C/svg%3E");opacity:0.3;mix-blend-mode:multiply}
 #scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));z-index:9999;width:0%;transition:width 0.1s linear;pointer-events:none}
 #cursorGlow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,153,58,0.06) 0%,transparent 65%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0}
 
-/* ══ LOGO ══ */
 .logo-mark{display:flex;align-items:center;gap:0.65rem;cursor:pointer;text-decoration:none}
+.logo-icon-box{width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:1.4rem;font-weight:700;box-shadow:0 4px 12px rgba(201,153,58,0.25);position:relative;overflow:hidden}
+.logo-icon-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2),transparent)}
 .logo-text{display:flex;flex-direction:column;line-height:1}
 .logo-text-main{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;color:var(--cream)}
 .logo-text-main span{color:var(--gold)}
 .logo-text-sub{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-50);margin-top:1px}
 
-/* ══ NAV ══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(255,248,236,0.85);backdrop-filter:blur(32px) saturate(1.4);border-bottom:1px solid var(--rim);transition:padding var(--dur) var(--ease),background var(--dur) var(--ease);box-shadow:0 1px 20px rgba(26,19,16,0.08)}
-nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
-.nav-links{display:flex;align-items:center;gap:0.2rem;background:var(--cream-10);border:1px solid var(--rim);border-radius:50px;padding:0.35rem 0.7rem}
-.nav-links a{font-size:0.78rem;font-weight:500;color:var(--cream-50);padding:0.3rem 0.8rem;border-radius:40px;transition:color 0.2s,background 0.2s;white-space:nowrap}
-.nav-links a:hover{color:var(--cream);background:var(--cream-10)}
-.nav-call{display:flex;align-items:center;gap:0.5rem;background:var(--gold);color:#fff;padding:0.5rem 1.2rem;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.03em;transition:var(--dur) var(--ease);white-space:nowrap}
-.nav-call:hover{background:var(--gold-bright);box-shadow:0 6px 24px rgba(201,153,58,0.35);transform:translateY(-1px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(255,248,236,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;transition:padding var(--dur) var(--ease),background var(--dur) var(--ease),backdrop-filter var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+nav.scrolled{padding:0.9rem 5%;background:rgba(255,248,236,0.85);backdrop-filter:blur(32px) saturate(1.4);border-bottom:1px solid var(--rim);box-shadow:0 1px 20px rgba(26,19,16,0.03)}
+.nav-links{display:flex;align-items:center;gap:0.2rem;background:var(--cream-10);border:1px solid var(--rim);border-radius:50px;padding:0.35rem 0.7rem;backdrop-filter:blur(10px);transition:var(--dur)}
+nav.scrolled .nav-links{background:var(--ink3)}
+.nav-links a{font-size:0.78rem;font-weight:500;color:var(--cream-50);padding:0.45rem 1.1rem;border-radius:40px;transition:color 0.2s,background 0.2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--cream);background:var(--ink2);box-shadow:0 2px 8px rgba(26,19,16,0.04)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-call{display:flex;align-items:center;gap:0.5rem;background:var(--cream);color:var(--ink);padding:0.65rem 1.4rem;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.03em;transition:var(--dur) var(--ease);border:1px solid transparent}
+.nav-call:hover{background:var(--gold);color:#fff;box-shadow:0 6px 24px rgba(201,153,58,0.25);transform:translateY(-1px)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:9px 10px;border-radius:12px;background:var(--cream-10);border:1px solid var(--rim);transition:var(--dur) var(--ease)}
 .hamburger:hover{border-color:var(--gold-rim);background:var(--gold-dim)}
 .hamburger span{display:block;width:22px;height:2px;background:var(--cream);border-radius:2px;transition:var(--dur) var(--ease)}
@@ -143,7 +91,6 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.9px,-4.9px)}
 
-/* ══ DRAWER ══ */
 .drawer-backdrop{position:fixed;inset:0;z-index:505;background:rgba(26,19,16,0.35);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.35s}
 .drawer-backdrop.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;top:0;right:0;bottom:0;z-index:510;width:min(340px,88vw);background:var(--ink2);border-left:1px solid var(--rim);display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.38s var(--ease);box-shadow:-40px 0 100px rgba(26,19,16,0.15)}
@@ -180,7 +127,6 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
   .drawer-foot a{padding:1.05rem;border-radius:14px;font-size:1rem;font-weight:700;}
 }
 
-/* ══ MARQUEE ══ */
 .marquee-wrap{background:var(--gold);overflow:hidden;padding:0.55rem 0;position:relative;z-index:2;max-width:100vw;contain:paint}
 .marquee-track{display:flex;gap:0;animation:marqueeScroll 28s linear infinite;width:max-content}
 .marquee-track:hover{animation-play-state:paused}
@@ -188,68 +134,162 @@ nav.scrolled{padding:0.65rem 5%;background:rgba(255,248,236,0.97)}
 .marquee-dot{width:4px;height:4px;background:rgba(26,19,16,0.4);border-radius:50%}
 @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ══ HERO ══ */
-.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:9rem 5% 5rem;max-width:1400px;margin:0 auto;position:relative}
+section{padding:7.5rem 5% 6.5rem;position:relative}
+.s-inner{max-width:1300px;margin:0 auto}
+.s-label{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.7rem}
+.s-label::before{content:'';width:24px;height:1px;background:var(--gold-rim)}
+.s-h{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-0.02em;color:var(--cream);margin-bottom:2.8rem}
+.s-h em{font-style:italic;color:var(--gold);font-weight:600}
+
+.hero{min-height:100svh;display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;padding-top:8.5rem;padding-bottom:5rem}
 .hero-left{position:relative;z-index:1}
-.h-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;background:var(--gold-dim);border:1px solid var(--gold-rim);border-radius:50px;padding:0.4rem 1rem;font-family:var(--mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem}
-.live{width:7px;height:7px;background:var(--green);border-radius:50%;animation:livepulse 2s ease infinite}
-@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(26,153,85,0.5)}70%{box-shadow:0 0 0 8px rgba(26,153,85,0)}100%{box-shadow:0 0 0 0 rgba(26,153,85,0)}}
+.h-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;background:var(--gold-dim);border:1px solid var(--gold-rim);border-radius:50px;padding:0.45rem 1.1rem;font-family:var(--mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.8rem;box-shadow:0 2px 10px rgba(201,153,58,0.04)}
+.live{width:7px;height:7px;background:var(--green);border-radius:50%;position:relative}
+.live::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--green);animation:livepulse 2s ease infinite}
+@keyframes livepulse{0%{transform:scale(1);opacity:1}100%{transform:scale(2.4);opacity:0}}
 .hero-h1{font-family:var(--serif);font-size:clamp(3rem,5.2vw,5.8rem);font-weight:700;line-height:1.04;letter-spacing:-0.02em;color:var(--cream);margin-bottom:1.6rem}
 .hero-h1 em{font-style:italic;color:var(--gold);font-weight:600}
-.hero-p{color:var(--cream-50);font-size:1rem;line-height:1.75;font-weight:300;max-width:420px;margin-bottom:2.4rem}
-.trust-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.4rem}
-.t-chip{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.68rem;color:var(--cream-50);border:1px solid var(--rim);border-radius:8px;padding:0.35rem 0.8rem;background:var(--cream-10);letter-spacing:0.05em}
+.hero-p{color:var(--cream-50);font-size:1.02rem;line-height:1.75;font-weight:300;max-width:480px;margin-bottom:2.6rem}
+.trust-row{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.t-chip{display:flex;align-items:center;gap:0.45rem;font-family:var(--mono);font-size:0.68rem;font-weight:500;color:var(--cream-50);border:1px solid var(--rim);border-radius:8px;padding:0.45rem 0.9rem;background:var(--ink2);letter-spacing:0.02em;box-shadow:0 2px 8px rgba(26,19,16,0.02)}
+.t-chip span.tk{color:var(--gold);font-size:0.8rem}
+.hero-actions{display:flex;align-items:center;gap:1.2rem}
+.btn-primary{background:var(--gold);color:#fff;padding:0.95rem 2.2rem;border-radius:50px;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;transition:var(--dur) var(--ease);box-shadow:0 8px 32px rgba(201,153,58,0.25);border:1px solid transparent}
+.btn-primary:hover{background:var(--gold-bright);box-shadow:0 12px 36px rgba(201,153,58,0.4);transform:translateY(-2px)}
+.btn-sec{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:700;color:var(--cream);position:relative;padding:0.5rem 0;transition:color 0.2s}
+.btn-sec::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0.3);transform-origin:left;transition:transform var(--dur) var(--ease)}
+.btn-sec:hover{color:var(--gold)}.btn-sec:hover::after{transform:scaleX(1)}
 
-/* BOOKING CARD */
-.book-card{background:var(--ink2);border:1px solid var(--rim);border-radius:28px;padding:2rem 1.8rem;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);z-index:1;width:min(100%,440px)}
+.hero-right{display:flex;justify-content:flex-end;position:relative}
+.hero-right::before{content:'';position:absolute;width:450px;height:450px;background:radial-gradient(circle,rgba(201,153,58,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.book-card{background:var(--ink2);border:1px solid var(--rim);border-radius:28px;padding:2.4rem 2.2rem;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);z-index:1;width:min(100%,440px)}
 .book-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold-bright) 55%,transparent 100%)}
-.bc-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem}
-.bc-sub{font-size:0.78rem;color:var(--cream-50);margin-bottom:1.2rem;font-weight:300}.bc-sub strong{color:var(--green)}
+.bc-title{font-family:var(--serif);font-size:1.65rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;letter-spacing:-0.01em}
+.bc-sub{font-size:0.78rem;color:var(--cream-50);margin-bottom:1.8rem;font-weight:300}
+.bc-sub strong{font-weight:600;color:var(--green)}
 
-/* ESTIMATOR WIDGET */
-.estimator-box{background:var(--ink4);border:1px solid var(--gold-rim);border-radius:16px;padding:1rem;margin-bottom:1.2rem}
-.est-header{display:flex;justify-content:between;align-items:center;margin-bottom:0.5rem;font-size:0.8rem;font-weight:600}
-.est-slider{width:100%;accent-color:var(--gold);margin:0.4rem 0}
-.est-result{display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.75rem;color:var(--gold);margin-top:0.2rem;font-weight:700}
+/* LIVE FARE CALCULATOR SLIDER EXTRA STYLING PRESERVED */
+.estimator-box{background:var(--ink4);border:1px solid var(--gold-rim);border-radius:16px;padding:1.1rem;margin-bottom:1.4rem}
+.est-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;font-size:0.8rem;font-weight:600}
+.est-slider{width:100%;accent-color:var(--gold);margin:0.5rem 0;cursor:pointer}
+.est-result{display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.75rem;color:var(--gold);margin-top:0.3rem;font-weight:700}
 
-.field{margin-bottom:0.8rem;position:relative}
-.field label{display:block;font-size:0.66rem;font-weight:600;color:var(--cream-50);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;font-family:var(--mono)}
-.field input,.field select{width:100%;background:var(--ink3);border:1px solid var(--rim);border-radius:12px;color:var(--cream);font-family:var(--sans);font-size:0.85rem;padding:0.78rem 1rem;outline:none;transition:var(--dur)}
+.field{margin-bottom:1.1rem;position:relative}
+.field label{display:block;font-size:0.66rem;font-weight:600;color:var(--cream-50);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.45rem;font-family:var(--mono)}
+.field input,.field select{width:100%;background:var(--ink3);border:1px solid var(--rim);border-radius:12px;color:var(--cream);font-family:var(--sans);font-size:0.88rem;padding:0.85rem 1.1rem;transition:border-color var(--dur),background var(--dur);-webkit-appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1310' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center;background-size:0.9rem;padding-right:2.5rem}
+.field input::placeholder{color:var(--cream-25);font-weight:300}
 .field input:focus,.field select:focus{border-color:var(--gold-rim);background:var(--ink4)}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
-.submit-btn{width:100%;margin-top:1rem;background:var(--gold);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--sans);font-size:0.9rem;font-weight:700;cursor:pointer;transition:var(--dur) var(--ease);display:flex;align-items:center;justify-content:center;gap:0.6rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.submit-btn{width:100%;margin-top:0.6rem;background:var(--gold);color:#fff;border-radius:14px;padding:1.05rem;font-size:0.88rem;font-weight:700;letter-spacing:0.02em;transition:var(--dur) var(--ease);display:flex;align-items:center;justify-content:center;gap:0.6rem;box-shadow:0 4px 16px rgba(201,153,58,0.15)}
 .submit-btn:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 12px 28px rgba(201,153,58,0.35)}
+.submit-btn span{font-size:1.1rem;line-height:1}
 
-/* WHY SECTION */
-.why-bg{background:var(--ink3)}
-section{padding:6rem 5%}
-.s-inner{max-width:1400px;margin:0 auto}
-.s-label{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.7rem}
-.s-h{font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);font-weight:700;line-height:1.08;color:var(--cream);margin-bottom:2rem}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
-.why-card{background:var(--ink2);border:1px solid var(--rim);border-radius:20px;padding:2rem 1.7rem;box-shadow:var(--shadow)}
+@media(max-width:992px){
+  .hero{grid-template-columns:1fr;gap:4.5rem;padding-top:7.5rem;padding-bottom:4rem;text-align:center}
+  .hero-p{margin-left:auto;margin-right:auto}
+  .trust-row,.hero-actions{justify-content:center}
+  .hero-right{justify-content:center}
+}
 
-/* CHAT BOT WINDOW */
+.why-bg{background:var(--ink3);position:relative}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.why-card{background:var(--ink2);border:1px solid var(--rim);border-radius:24px;padding:2.6rem 2.2rem;box-shadow:var(--shadow);transition:transform var(--dur) var(--ease),border-color var(--dur),box-shadow var(--dur);display:flex;flex-direction:column;gap:1.4rem}
+.why-card:hover{transform:translateY(-6px);border-color:var(--gold-rim);box-shadow:var(--shadow-lg)}
+.wc-num{font-family:var(--mono);font-size:0.75rem;color:var(--gold);font-weight:600;background:var(--gold-dim);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.wc-content{display:flex;flex-direction:column;gap:0.5rem}
+.why-card h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;letter-spacing:-0.01em}
+.why-card p{color:var(--cream-50);font-size:0.92rem;line-height:1.65;font-weight:300}
+@media(max-width:992px){.why-grid{grid-template-columns:1fr;gap:1.4rem}}
+
+.rates-bg{background:var(--ink2)}
+.rates-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.rate-card{background:var(--ink);border:1px solid var(--rim);border-radius:20px;padding:1.8rem;display:flex;flex-direction:column;justify-content:between;position:relative;transition:var(--dur)}
+.rate-card:hover{border-color:var(--gold-rim);background:var(--ink3);transform:scale(1.02)}
+.rate-card.featured{background:var(--cream);color:var(--ink);border-color:var(--cream);box-shadow:var(--shadow-lg)}
+.rc-tag{position:absolute;top:1rem;right:1.2rem;font-family:var(--mono);font-size:0.55rem;background:var(--gold);color:#fff;padding:0.25rem 0.6rem;border-radius:30px;text-transform:uppercase;letter-spacing:0.06em}
+.rc-type{font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--cream-50);margin-bottom:0.4rem}
+.rate-card.featured .rc-type{color:rgba(255,248,236,0.5)}
+.rc-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.1;margin-bottom:1rem}
+.rc-price{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:1.4rem}
+.rate-card.featured .rc-price{color:var(--gold-bright)}
+.rc-desc{font-size:0.8rem;color:var(--cream-50);line-height:1.5;font-weight:300}
+.rate-card.featured .rc-desc{color:rgba(255,248,236,0.5)}
+@media(max-width:992px){.rates-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:576px){.rates-grid{grid-template-columns:1fr}}
+
+.steps-bg{background:var(--ink4)}
+.steps-wrapper{display:grid;grid-template-columns:1fr;gap:0.1rem;background:var(--gold-rim);border-radius:24px;overflow:hidden;border:1px solid var(--gold-rim)}
+.step-row{background:var(--ink2);padding:2.2rem;display:grid;grid-template-columns:80px 1fr 180px;align-items:center;gap:2rem;transition:background 0.3s}
+.step-row:hover{background:var(--ink4)}
+.st-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--gold-rim);font-style:italic;line-height:1}
+.step-row:hover .st-num{color:var(--gold)}
+.st-mid h4{font-family:var(--serif);font-size:1.35rem;font-weight:700;margin-bottom:0.3rem}
+.st-mid p{color:var(--cream-50);font-size:0.9rem;font-weight:300}
+.st-right{text-align:right;font-family:var(--mono);font-size:0.72rem;color:var(--gold);font-weight:600;letter-spacing:0.04em}
+@media(max-width:768px){
+  .step-row{grid-template-columns:1fr;gap:0.8rem;text-align:center;padding:2rem 1.6rem}
+  .st-right{text-align:center;margin-top:0.4rem}
+}
+
+footer{background:#110C0A;color:#F2EAD8;padding:5rem 5% 3rem;border-top:1px solid rgba(255,248,236,0.05)}
+.f-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;padding-bottom:4rem;border-bottom:1px solid rgba(255,248,236,0.06)}
+.f-left{display:flex;flex-direction:column;gap:1.6rem}
+.f-left .logo-text-main{color:#fff}
+.f-left .logo-text-sub{color:rgba(255,248,236,0.4)}
+.f-desc{color:rgba(255,248,236,0.5);font-size:0.92rem;max-width:380px;font-weight:300;line-height:1.7}
+.f-contact{display:flex;flex-direction:column;gap:0.4rem;font-family:var(--mono);font-size:0.75rem;color:var(--gold-bright)}
+.f-right{display:flex;flex-direction:column;gap:1rem;text-align:right}
+.f-right h5{font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,248,236,0.3)}
+.f-cities{display:flex;flex-direction:column;gap:0.4rem;font-family:var(--serif);font-size:1.5rem;font-weight:600;color:#F2EAD8}
+.f-base{max-width:1300px;margin:0 auto;padding-top:2rem;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:0.62rem;color:rgba(255,248,236,0.3);letter-spacing:0.02em}
+@media(max-width:768px){
+  .f-inner{grid-template-columns:1fr;gap:3.5rem;text-align:center}
+  .f-left,.f-right{align-items:center;text-align:center}
+  .f-base{flex-direction:column;gap:1rem;text-align:center}
+}
+
 #chatBotContainer{position:fixed;bottom:24px;right:24px;z-index:2000;font-family:var(--sans)}
-#chatToggle{width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;box-shadow:var(--shadow-lg)}
-#chatWindow{display:none;width:340px;height:420px;background:var(--ink2);border:1px solid var(--gold-rim);border-radius:20px;box-shadow:var(--shadow-lg);flex-direction:column;overflow:hidden;position:absolute;bottom:70px;right:0}
-.chat-header{background:var(--gold);color:#fff;padding:1rem;font-weight:700;font-size:0.9rem}
-.chat-messages{flex:1;padding:1rem;overflow-y:auto;font-size:0.82rem;display:flex;flex-direction:column;gap:0.5rem}
-.msg{padding:0.6rem 0.8rem;border-radius:12px;max-width:80%}
-.msg.bot{background:var(--ink3);align-self:flex-start}
-.msg.user{background:var(--gold);color:#fff;align-self:flex-end}
-.chat-input-area{display:flex;border-top:1px solid var(--rim)}
-.chat-input-area input{flex:1;border:none;padding:0.8rem;outline:none;background:var(--ink)}
-.chat-input-area button{background:var(--gold);color:#fff;border:none;padding:0 1rem;cursor:pointer}
+#chatToggle{width:56px;height:56px;border-radius:50%;background:var(--cream);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;box-shadow:var(--shadow-lg);transition:transform 0.3s var(--ease),background 0.3s}
+#chatToggle:hover{transform:scale(1.06);background:var(--gold);color:#fff}
+#chatWindow{display:none;width:350px;height:460px;background:var(--ink2);border:1px solid var(--rim);border-radius:24px;box-shadow:var(--shadow-lg);flex-direction:column;overflow:hidden;position:absolute;bottom:72px;right:0;transform:translateY(10px);opacity:0;transition:transform 0.4s var(--ease),opacity 0.4s var(--ease);border:1px solid var(--gold-rim)}
+#chatWindow.open{display:flex;transform:translateY(0);opacity:1}
+.chat-header{padding:1.2rem;background:var(--ink3);border-bottom:1px solid var(--rim);display:flex;align-items:center;justify-content:space-between}
+.ch-title{font-family:var(--serif);font-size:1.1rem;font-weight:700}
+.ch-status{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.58rem;text-transform:uppercase;color:var(--green);letter-spacing:0.04em;font-weight:600}
+.ch-status .live{width:5px;height:5px}
+.chat-messages{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:0.8rem;background:var(--ink)}
+.msg-wrap{display:flex;flex-direction:column;max-width:82%}
+.msg-wrap.bot{align-self:flex-start}
+.msg-wrap.user{align-self:flex-end}
+.msg-meta{font-family:var(--mono);font-size:0.55rem;color:var(--cream-25);margin-bottom:0.2rem;padding:0 0.4rem}
+.msg-wrap.user .msg-meta{text-align:right}
+.msg-box{padding:0.75rem 1rem;font-size:0.85rem;line-height:1.5;border-radius:16px;box-shadow:0 2px 8px rgba(26,19,16,0.02)}
+.msg-wrap.bot .msg-box{background:var(--ink2);color:var(--cream);border-bottom-left-radius:4px;border:1px solid var(--rim)}
+.msg-wrap.user .msg-box{background:var(--gold);color:#fff;border-bottom-right-radius:4px}
+.chat-inputs{padding:0.7rem 1rem;background:var(--ink2);border-top:1px solid var(--rim);display:flex;align-items:center;gap:0.6rem}
+.chat-inputs input{flex:1;font-size:0.85rem;padding:0.5rem 0}
+.chat-inputs button{width:34px;height:34px;background:var(--cream);color:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:0.2s}
+.chat-inputs button:hover{background:var(--gold);color:#fff}
 </style>
 </head>
 <body>
 
 <div id="scrollBar"></div>
 
+<div id="cursorGlow"></div>
+
+<div id="scrollRoad">
+  <div class="road-track">
+    <div class="road-progress" id="roadProgress"></div>
+    <div class="road-car" id="roadCar">🚗</div>
+  </div>
+</div>
+
 <div id="splashScreen">
   <div class="splash-glow"></div>
   <div class="splash-logo-wrap">
+    <div class="logo-icon-box" style="width:50px;height:50px;font-size:1.8rem">D</div>
     <div class="splash-title">Drive<span>Buddy</span></div>
     <div class="splash-tagline">Premium Driver Service</div>
   </div>
@@ -261,79 +301,122 @@ section{padding:6rem 5%}
 
 <nav id="navbar">
   <a href="#" class="logo-mark">
+    <div class="logo-icon-box">D</div>
     <div class="logo-text">
       <span class="logo-text-main">Drive<span>Buddy</span></span>
       <span class="logo-text-sub">Premium Drivers</span>
     </div>
   </a>
   <div class="nav-links">
-    <a href="#why-us">Why Us</a>
-    <a href="#rates">Pricing</a>
-    <a href="tel:9111473929">Support</a>
+    <a href="#why-us" class="nav-ln">Why Us</a>
+    <a href="#rates" class="nav-ln">Tariffs</a>
+    <a href="#steps" class="nav-ln">Process</a>
   </div>
-  <a href="tel:9111473929" class="nav-call">📞 Call 9111473929</a>
+  <div class="nav-right">
+    <a href="tel:9111473929" class="nav-call">📞 Call 9111473929</a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </nav>
 
-<div class="marquee-wrap">
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="logo-mark">
+      <div class="logo-icon-box">D</div>
+      <div class="logo-text">
+        <span class="logo-text-main">Drive<span>Buddy</span></span>
+      </div>
+    </div>
+    <button class="drawer-close" id="drawerClose">✕</button>
+  </div>
+  <div class="drawer-body">
+    <a href="#why-us" class="dr-ln">Why Us</a>
+    <a href="#rates" class="dr-ln">Tariffs</a>
+    <a href="#steps" class="dr-ln">Process</a>
+  </div>
+  <div class="drawer-foot">
+    <a href="tel:9111473929" class="d-call">📞 Call 9111473929</a>
+    <a href="https://wa.me/9111473929" class="d-wa" target="_blank">💬 WhatsApp Chat</a>
+  </div>
+</div>
+
+<div class="marquee-wrap" style="margin-top:5.5rem">
   <div class="marquee-track">
     <div class="marquee-item"><span class="marquee-dot"></span> Raipur</div>
     <div class="marquee-item"><span class="marquee-dot"></span> Bhilai</div>
     <div class="marquee-item"><span class="marquee-dot"></span> Durg</div>
     <div class="marquee-item"><span class="marquee-dot"></span> Bilaspur</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Background-Verified Chauffeurs</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> 30-Min Guaranteed Arrival</div>
     <div class="marquee-item"><span class="marquee-dot"></span> Raipur</div>
     <div class="marquee-item"><span class="marquee-dot"></span> Bhilai</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Durg</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Bilaspur</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Background-Verified Chauffeurs</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> 30-Min Guaranteed Arrival</div>
   </div>
 </div>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-left">
-    <div class="h-eyebrow"><span class="live"></span> Chhattishgarh's Luxury Fleet</div>
-    <h1 class="hero-h1">Hire Professional Drivers <em>On-Demand</em></h1>
-    <p class="hero-p">Premium background-verified personal chauffeurs across major business sectors of Chhattisgarh. Reliable service arrival guaranteed within 30 minutes.</p>
+    <div class="h-eyebrow"><span class="live"></span> Chhattisgarh's Luxury Standard</div>
+    <h1 class="hero-h1">Hire Professional Chauffeurs <em>On-Demand</em></h1>
+    <p class="hero-p">Premium driver booking services tailored across Raipur, Bhilai, Durg, and Bilaspur. Your car, our elite background-verified professional driver.</p>
     <div class="trust-row">
       <div class="t-chip"><span class="tk">✔</span> Police Verified</div>
-      <div class="t-chip"><span class="tk">✔</span> Breathalyzer Safety</div>
-      <div class="t-chip"><span class="tk">✔</span> 5+ Years Experience</div>
+      <div class="t-chip"><span class="tk">✔</span> Alcohol Breath Analyzer Checked</div>
+      <div class="t-chip"><span class="tk">✔</span> 5+ Years Local Experience</div>
+    </div>
+    <div class="hero-actions">
+      <a href="#rates" class="btn-primary">View Dynamic Pricing</a>
+      <a href="tel:9111473929" class="btn-sec">Or Call Desk Directly ➔</a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="book-card">
-      <div class="bc-title">Calculate & Book</div>
-      <div class="bc-sub">Live calculations for <strong>Raipur & Surrounding Regions</strong>.</div>
+      <div class="bc-title">Secure Booking</div>
+      <div class="bc-sub">Guaranteed safe arrival dispatched in <strong>30 minutes</strong>!</div>
       
       <div class="estimator-box">
         <div class="est-header">
-          <span>Select Service Duration:</span>
-          <span id="durationDisplay" style="color:var(--gold)">4 Hours</span>
+          <span>Booking Duration:</span>
+          <span id="durationDisplay" style="color:var(--gold); font-weight:700">4 Hours</span>
         </div>
         <input type="range" id="hourSlider" class="est-slider" min="1" max="12" value="4">
         <div class="est-result">
-          <span>Estimated Tariff:</span>
+          <span>Estimated Fare:</span>
           <span id="priceDisplay">₹700</span>
         </div>
       </div>
 
       <form id="bookingForm">
         <div class="field">
-          <label>Your Phone Number</label>
-          <input type="tel" id="userPhone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+          <label>Mobile Number</label>
+          <input type="tel" id="bkPhone" placeholder="+91 XXXXX XXXXX" required pattern="[0-9]{10}">
+        </div>
+        <div class="field">
+          <label>Pickup Sector / Area</label>
+          <input type="text" id="bkPickup" placeholder="e.g. Tatibandh, Raipur" required>
         </div>
         <div class="field-row">
           <div class="field">
-            <label>Pickup Location</label>
-            <input type="text" id="userPickup" placeholder="e.g. Shankar Nagar" required>
-          </div>
-          <div class="field">
-            <label>Service Type</label>
-            <select id="serviceType">
-              <option value="Local Trip">Local Shift</option>
-              <option value="Outstation">Outstation</option>
-              <option value="Night Shift">Night Shift</option>
+            <label>Service Framework</label>
+            <select id="bkService">
+              <option value="Local Shift">Local Shift</option>
+              <option value="Outstation Run">Outstation</option>
+              <option value="Night Protocol">Night Driver</option>
             </select>
           </div>
+          <div class="field">
+            <label>Destination Target</label>
+            <input type="text" id="bkDrop" placeholder="e.g. Bilaspur" required>
+          </div>
         </div>
-        <button type="submit" class="submit-btn">⚡ Secure Booking</button>
+        <button type="submit" class="submit-btn" id="submitBtn">⚡ Dispatch Driver Request</button>
       </form>
     </div>
   </div>
@@ -341,143 +424,168 @@ section{padding:6rem 5%}
 
 <section id="why-us" class="why-bg">
   <div class="s-inner">
-    <div class="s-label">Safety Pillars</div>
-    <h2 class="s-h">Why Chhattisgarh Trusts <em>DriveBuddy</em></h2>
+    <div class="s-label">Strict Compliance</div>
+    <h2 class="s-h">Engineered for Complete <em>Safety &amp; Trust</em></h2>
     <div class="why-grid">
       <div class="why-card">
-        <h3>Background Checked</h3>
-        <p>Complete official government ID and local criminal records checking handled on all assigned workforce.</p>
+        <div class="wc-num">01</div>
+        <div class="wc-content">
+          <h3>Thorough Criminal Verifications</h3>
+          <p>Every single driver profile undergoes multi-level local police checks and comprehensive identification protocols.</p>
+        </div>
       </div>
       <div class="why-card">
-        <h3>Breathalyzer Protocols</h3>
-        <p>Drivers undergo rigorous field verification audits prior to initializing client premium keys or driving assignments.</p>
+        <div class="wc-num">02</div>
+        <div class="wc-content">
+          <h3>Sobriety Breathalyzers</h3>
+          <p>Strict operational enforcement requires mandatory active device alcohol screening before keys change hands.</p>
+        </div>
       </div>
       <div class="why-card">
-        <h3>Rapid 30-Min Dispatch</h3>
-        <p>Intelligent localized vehicle driver positioning ensures lightning fast dispatch directly to your door.</p>
+        <div class="wc-num">03</div>
+        <div class="wc-content">
+          <h3>Elite Local Expertise</h3>
+          <p>We only provision seasoned drivers harboring more than 5 years of verified crash-free highway performance history.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<section id="rates" class="rates-bg">
+  <div class="s-inner">
+    <div class="s-label">Transparent Tariffs</div>
+    <h2 class="s-h">Premium Quality, <em>Zero Hidden Surcharges</em></h2>
+    <div class="rates-grid">
+      <div class="rate-card">
+        <div class="rc-type">Hourly Run</div>
+        <div class="rc-title">Short Commute</div>
+        <div class="rc-price">₹300<span style="font-size:1rem;color:var(--cream-50)">/1st Hr</span></div>
+        <div class="rc-desc">Perfect for quick errands or short regional medical visits around center sectors.</div>
+      </div>
+      <div class="rate-card featured">
+        <div class="rc-tag">Popular</div>
+        <div class="rc-type">Extended</div>
+        <div class="rc-title">Business Shift</div>
+        <div class="rc-price">₹600<span style="font-size:1rem;color:rgba(255,248,236,0.4)">/3 Hrs</span></div>
+        <div class="rc-desc">Ideal for corporate meetings, premium dinner schedules, and structured shopping tours.</div>
+      </div>
+      <div class="rate-card">
+        <div class="rc-type">Day Pass</div>
+        <div class="rc-title">Full Day Luxury</div>
+        <div class="rc-price">₹1000<span style="font-size:1rem;color:var(--cream-50)">/8 Hrs</span></div>
+        <div class="rc-desc">Complete continuous driver assignment access tailored for prolonged urban multi-stops.</div>
+      </div>
+      <div class="rate-card">
+        <div class="rc-type">Intercity</div>
+        <div class="rc-title">Outstation Drive</div>
+        <div class="rc-price">₹1200<span style="font-size:1rem;color:var(--cream-50)">/Day Base</span></div>
+        <div class="rc-desc">Highly secure continuous tracking navigation across major national highway networks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="steps" class="steps-bg">
+  <div class="s-inner">
+    <div class="s-label">Seamless Pipeline</div>
+    <h2 class="s-h">How It <em>Operates</em></h2>
+    <div class="steps-wrapper">
+      <div class="step-row">
+        <div class="st-num">01</div>
+        <div class="st-mid">
+          <h4>Input Your Metrics</h4>
+          <p>Choose your target pickup spot, destination timeline, and custom operational needs.</p>
+        </div>
+        <div class="st-right">TAKES 45 SECONDS</div>
+      </div>
+      <div class="step-row">
+        <div class="st-num">02</div>
+        <div class="st-mid">
+          <h4>Profile Match Dispatch</h4>
+          <p>Our routing intelligence profiles verified driver tags matched nearby within your urban sector.</p>
+        </div>
+        <div class="st-right">INSTANT ASSIGNMENT</div>
+      </div>
+      <div class="step-row">
+        <div class="st-num">03</div>
+        <div class="st-mid">
+          <h4>Chauffeur Arrival</h4>
+          <p>Your designated personal driver reaches your exact coordinates within a 30-minute tracking window.</p>
+        </div>
+        <div class="st-right">30-MIN PROMISE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-inner">
+    <div class="f-left">
+      <div class="logo-mark">
+        <div class="logo-icon-box">D</div>
+        <div class="logo-text">
+          <span class="logo-text-main">Drive<span>Buddy</span></span>
+          <span class="logo-text-sub">Premium Driver Services</span>
+        </div>
+      </div>
+      <p class="f-desc">Providing certified personal driver structures safeguarding private luxury transport logistics across prominent business hubs.</p>
+      <div class="f-contact">
+        <span>📍 Corporate Office: Raipur, Chhattisgarh</span>
+        <span>📞 Hotline Support: +91 91114 73929</span>
+      </div>
+    </div>
+    <div class="f-right">
+      <h5>Active Regional Sectors</h5>
+      <div class="f-cities">
+        <span>Raipur · Bhilai</span>
+        <span>Durg · Bilaspur</span>
+      </div>
+    </div>
+  </div>
+  <div class="f-base">
+    <span>&copy; 2026 DriveBuddy India. All rights reserved.</span>
+    <span>Premium Driver Architecture Solutions</span>
+  </div>
+</footer>
+
 <div id="chatBotContainer">
   <div id="chatToggle">💬</div>
   <div id="chatWindow">
-    <div class="chat-header">DriveBuddy Intelligent Assistant</div>
-    <div class="chat-messages" id="chatMsgs">
-      <div class="msg bot">Hello! Ask me about rates, service locations, or booking details!</div>
+    <div class="chat-header">
+      <div class="ch-title">DriveBuddy Bot</div>
+      <div class="ch-status"><span class="live"></span>Active Ops</div>
     </div>
-    <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="Type a question...">
-      <button id="sendChatBtn">Send</button>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg-wrap bot">
+        <div class="msg-meta">DriveBuddy Bot · Just now</div>
+        <div class="msg-box">Hello! Ask me about pricing, service cities, safety checking rules, or how to secure a rapid booking confirmation!</div>
+      </div>
+    </div>
+    <div class="chat-inputs">
+      <input type="text" id="chatInput" placeholder="Type message or ask about rates...">
+      <button id="chatSendBtn">➔</button>
     </div>
   </div>
 </div>
 
 <script>
-// Splash Page lifecycle execution routines
-window.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('splash-active');
-  setTimeout(() => {
-    const splash = document.getElementById('splashScreen');
-    if(splash) {
-      splash.classList.add('hide');
-      document.body.classList.remove('splash-active');
-    }
-  }, 1600);
+// Original interactive state trackers
+const hamburger = document.getElementById('hamburger');
+const drawer = document.getElementById('drawer');
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+const drawerClose = document.getElementById('drawerClose');
+const navbar = document.getElementById('navbar');
+const scrollBar = document.getElementById('scrollBar');
+const cursorGlow = document.getElementById('cursorGlow');
+const scrollRoad = document.getElementById('scrollRoad');
+const roadProgress = document.getElementById('roadProgress');
+const roadCar = document.getElementById('roadCar');
+
+// Cursor execution
+document.addEventListener('mousemove', (e) => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+  cursorGlow.style.opacity = '1';
 });
-
-// Dynamic Scroll Progress Calculation Track Indicator
-window.addEventListener('scroll', () => {
-  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.getElementById('scrollBar').style.width = scrolled + "%";
-  
-  const nav = document.getElementById('navbar');
-  if(winScroll > 40) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
-
-// Realtime Fare Matrix Operations Logic Array
-const slider = document.getElementById('hourSlider');
-const durationDisplay = document.getElementById('durationDisplay');
-const priceDisplay = document.getElementById('priceDisplay');
-
-function calculateFare(hours) {
-  if (hours <= 1) return 300;
-  if (hours <= 3) return 600;
-  if (hours <= 8) return 1000;
-  return 1200; // Cap for continuous local hourly shifts
-}
-
-slider.addEventListener('input', (e) => {
-  const hours = parseInt(e.target.value);
-  durationDisplay.textContent = hours + (hours === 1 ? " Hour" : " Hours");
-  priceDisplay.textContent = "₹" + calculateFare(hours);
-});
-
-// Intelligent Core Business Routing Engine Implementation
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const phone = document.getElementById('userPhone').value;
-  const pickup = document.getElementById('userPickup').value;
-  const service = document.getElementById('serviceType').value;
-  const hours = slider.value;
-  const estimatedCost = calculateFare(parseInt(hours));
-
-  // High Conversion Strategy: Automatically package details into prefilled message for operations desk
-  const messageText = `Hello DriveBuddy! I would like to book a driver.%0A%0A📱 Phone: ${phone}%0A📍 Pickup: ${pickup}%0A🛠️ Service: ${service}%0A⏱️ Duration: ${hours} Hours%0A💰 Estimated Cost: ₹${estimatedCost}`;
-  
-  // Directly fires dispatch window channel routing
-  window.open(`https://wa.me/9111473929?text=${messageText}`, '_blank');
-});
-
-// Local Chatbot Response Handling
-const chatToggle = document.getElementById('chatToggle');
-const chatWindow = document.getElementById('chatWindow');
-const chatInput = document.getElementById('chatInput');
-const sendChatBtn = document.getElementById('sendChatBtn');
-const chatMsgs = document.getElementById('chatMsgs');
-
-chatToggle.addEventListener('click', () => {
-  chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
-});
-
-function handleBotReply() {
-  const userText = chatInput.value.trim();
-  if(!userText) return;
-
-  // Append user text bubble element
-  const uBubble = document.createElement('div');
-  uBubble.className = 'msg user';
-  uBubble.textContent = userText;
-  chatMsgs.appendChild(uBubble);
-  chatInput.value = '';
-
-  setTimeout(() => {
-    const query = userText.toLowerCase();
-    let replyText = "Thank you for reaching out. Please call us at 9111473929 for lightning-fast booking confirmation!";
-    
-    if(query.match(/price|cost|rate|₹|rupee|kitna/)) {
-      replyText = "💰 Base Tariffs: 1hr · ₹300 | 3hr · ₹600 | Full Day packages start from ₹1000.";
-    } else if(query.match(/city|location|raipur|bhilai|durg|bilaspur/)) {
-      replyText = "📍 We provide 30-minute guaranteed driver tracking arrivals across Raipur, Bhilai, Durg, and Bilaspur!";
-    } else if(query.match(/safe|secure|verify|driver/)) {
-      replyText = "🛡️ Safety First: Every single driver profile has passed thorough background screening processes.";
-    }
-
-    const bBubble = document.createElement('div');
-    bBubble.className = 'msg bot';
-    bBubble.innerHTML = replyText;
-    chatMsgs.appendChild(bBubble);
-    chatMsgs.scrollTop = chatMsgs.scrollHeight;
-  }, 600);
-}
-
-sendChatBtn.addEventListener('click', handleBotReply);
-chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleBotReply(); });
-</script>
-</body>
-</html>
+document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '
